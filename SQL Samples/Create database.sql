@@ -43,18 +43,27 @@ CREATE TABLE "order" (
 );
 
 CREATE TABLE product_category (
-
+  category_id int AUTO_INCREMENT,
+  description varchar(8192),
+  PRIMARY KEY (category_id)
 );
 
 CREATE TABLE product (
-  
+  product_id int AUTO_INCREMENT,
+  name varchar(255),
+  description varchar(8192),
+  price decimal(12,2),
+  stock_count int,
+  category_id int,
+  PRIMARY KEY (product_id),
+  FOREIGN KEY (category_id) REFERENCES (product_category)
 );
 
 CREATE TABLE order_detail (
   order_num int,
   product_id int,
   quantity int,
-  sale_price decimal(10,2),
+  sale_price decimal(12,2),
   PRIMARY KEY (order_num, product_id),
   FOREIGN KEY (order_num) REFERENCES "order"(order_num),
   FOREIGN KEY (product_id) REFERENCES product(product_id)
