@@ -1,17 +1,11 @@
-/*
-***** Work in progress *****
-*/
--- This script will create the database used for the ordering system
+/* This script will create the database used for the ordering system
+Note that running this will delete all data in the database!
+To run from phpMyAdmin, choose the "SQL" tab at the top */
 
--- First drop tables if they exist. Allows for the script to be rerun
--- Note that running this will delete all data in the database!
-DROP TABLE IF EXISTS
-  customer,
-  employee,
-  order,
-  order_detail,
-  product,
-  product_category;
+-- Create the database if it doesn't exist
+DROP DATABASE IF EXISTS php_srep_ordering;
+CREATE DATABASE php_srep_ordering;
+USE php_srep_ordering;
 
 -- Now create the tables
 CREATE TABLE customer (
@@ -32,9 +26,9 @@ CREATE TABLE employee (
   PRIMARY KEY (emp_id)
 );
 
-CREATE TABLE "order" (
+CREATE TABLE `order` (
   order_num int AUTO_INCREMENT,
-  order_date datetime(),
+  order_date datetime,
   cust_id int,
   emp_id int,
   PRIMARY KEY (order_num),
@@ -56,7 +50,7 @@ CREATE TABLE product (
   stock_count int,
   category_id int,
   PRIMARY KEY (product_id),
-  FOREIGN KEY (category_id) REFERENCES (product_category)
+  FOREIGN KEY (category_id) REFERENCES product_category(category_id)
 );
 
 CREATE TABLE order_detail (
@@ -65,6 +59,6 @@ CREATE TABLE order_detail (
   quantity int,
   sale_price decimal(12,2),
   PRIMARY KEY (order_num, product_id),
-  FOREIGN KEY (order_num) REFERENCES "order"(order_num),
+  FOREIGN KEY (order_num) REFERENCES `order`(order_num),
   FOREIGN KEY (product_id) REFERENCES product(product_id)
 );
