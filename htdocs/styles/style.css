@@ -2,11 +2,58 @@
 filename: People Health Pharmecy
 author: Anis, Eamonn, Jonno, Leonard
 created: 10/09/2021
-last modified: 10/09/2021
+last modified: 13/09/2021
 */
 
+/*body*/
+ body{
+   background-color:rgba(30, 30, 56, 0.925);
+   text-align: center;
+ }
 
-/*Body element*/
-  body{
-      background-color: aliceblue;
-    }
+/*Form Fieldset adjustment*/
+fieldset{
+  max-width:300px;
+  height: 390px;
+  margin: auto;
+  padding-top: 0px;
+  padding-bottom: 3.5%;
+  padding-left: 2.5%;
+  padding-right: 2.5%;
+
+  border-radius: 20px;
+  border: none;
+  background-color: rgba(216, 232, 233, 0.938);
+}
+
+/*Form input*/
+#loginField input{
+  padding: 8px;
+  margin:auto;
+  width: 90%;
+  border-radius: 3px;
+  border: none;
+}
+
+/*Form*/
+#formSection
+{
+  margin-top: 100px;
+}
+
+/*Button*/
+#loginButton{
+  background-color: #11ca00;
+  color: white;
+  border: none; 
+  width: 90%;
+}
+/*Button hover*/
+#loginButton:hover{
+  background-color: #16e0049d;
+
+}
+/*Login avatarimage*/
+#loginAvatar{
+ width: 36%;
+}
