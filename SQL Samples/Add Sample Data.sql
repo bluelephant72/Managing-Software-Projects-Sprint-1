@@ -17,5 +17,11 @@ VALUES ('Drinks offered from the refrigerator');
 INSERT INTO product (name, description, price, stock_count, category_id)
 VALUES ('Water', '200ml Cool Springs Mount Dandenong Bottled Water', 3.50, 18, 1);
 
+INSERT INTO product (name, description, price, stock_count, category_id)
+VALUES ('Lemonade', '350ml Home Brand Lemon Flavoured Soft Drink', 4.00, 4, 1);
+
 INSERT INTO order_detail (order_num, product_id, quantity, sale_price)
 VALUES (1, 1, 2, 6.00);
+
+INSERT INTO order_detail (order_num, product_id, quantity, sale_price)
+VALUES (1, 2, 1, 4.00);
