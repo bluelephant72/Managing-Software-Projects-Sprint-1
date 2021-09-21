@@ -7,7 +7,7 @@ last modified: 13/09/2021
 
 /*body*/
  body{
-   background-color:rgba(30, 30, 56, 0.925);
+   background-color:rgba(64, 46, 165, 0.925);
    text-align: center;
  }
 
@@ -40,20 +40,48 @@ fieldset{
 {
   margin-top: 100px;
 }
+/*loginpage*/ 
+  /*Login Button*/
+    #loginButton{
+      background-color: #11ca00;
+      color: white;
+      border: none; 
+      
+    }
+    /*Button hover*/
+    #loginButton:hover{
+      background-color: #16e0049d;
 
-/*Button*/
-#loginButton{
-  background-color: #11ca00;
-  color: white;
-  border: none; 
-  width: 90%;
-}
-/*Button hover*/
-#loginButton:hover{
-  background-color: #16e0049d;
+    }
+  /*Login avatarimage*/
+  #loginAvatar{
+  width: 36%;
+  }
 
-}
-/*Login avatarimage*/
-#loginAvatar{
- width: 36%;
-}
+/*homepage*/  
+  /*Navigation Buttons*/
+    /*add sales button*/
+    #addSalesNavi{
+      background-color: grey;
+      font-size: 24px;
+    }
+    #addSalesNavi:hover{
+      background-color: rgb(68, 66, 66);
+      font-size: 24px;
+    }
+    /*View Sales Button*/
+    #viewReportsNavi{
+      background-color: grey;
+      font-size: 24px;
+    }
+    #viewReportsNavi:hover{
+      background-color: rgb(68, 66, 66);
+      font-size: 24px;
+    }
+  /*Logout Button*/
+    #logoutButton{
+      background-color: orange;
+    }
+    #logoutButton:hover{
+      background-color: orangered;
+    }
