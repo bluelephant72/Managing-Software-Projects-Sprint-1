@@ -38,6 +38,7 @@ CREATE TABLE `order` (
 
 CREATE TABLE product_category (
   category_id int AUTO_INCREMENT,
+  name varchar(255),
   description varchar(8192),
   PRIMARY KEY (category_id)
 );

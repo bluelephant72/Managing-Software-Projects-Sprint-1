@@ -11,8 +11,8 @@ VALUES ('Alice', 'Bloggs', '35 Key Way, Adelaide, South Australia, Australia', '
 INSERT INTO `order` (order_date, cust_id, emp_id)
 VALUES ('2021-09-20 17:24:35', 1, 1);
 
-INSERT INTO product_category (description)
-VALUES ('Drinks offered from the refrigerator');
+INSERT INTO product_category (name, description)
+VALUES ('Drinks', 'Drinks offered from the refrigerator');
 
 INSERT INTO product (name, description, price, stock_count, category_id)
 VALUES ('Water', '200ml Cool Springs Mount Dandenong Bottled Water', 3.50, 18, 1);
