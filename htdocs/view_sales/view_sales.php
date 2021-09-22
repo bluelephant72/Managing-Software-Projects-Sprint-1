@@ -17,7 +17,7 @@
 <!--Time table (Table)-->
 <section id="tableSection">
 	
-	<img src="../images/img_avatar1.png" id="loginAvatar" alt="avatar Image" title="Filesize 2.76 KB " />
+<img src="../images/img_avatar1.png" id="loginAvatar" alt="avatar Image" title="Filesize 2.76 KB " />
 
 <div >
       <button id="logoutButton" type="submit">Log Out</button>

@@ -1,0 +1,63 @@
+/*
+filename: People Health Pharmecy
+author: Anis, Eamonn, Jonno, Leonard
+created: 22/09/2021
+last modified: 22/09/2021
+*/
+
+/*body*/
+body{
+    background-color:rgba(64, 46, 165, 0.925);
+    text-align: center;
+  }
+
+ 
+ 
+   /*Login avatarimage*/
+   #loginAvatar{
+   width: 10%;
+   }
+
+   /*Logout Button*/
+     #logoutButton{
+       background-color: orange;
+       float: right;
+     }
+     #logoutButton:hover{
+       background-color: orangered;
+    }
+
+ /*Sales View Table*/
+
+
+ #salesViewTable, tr, td{
+      border: 1px solid rgb(255, 255, 255);
+      background-color: rgb(235, 235, 235);
+      border-collapse: collapse;
+      margin-top: 30px;
+      padding:40px;
+    }
+
+   th{
+      border: 1px solid rgb(255, 255, 255);
+      background-color: rgb(170, 170, 170);
+      border-collapse: collapse;
+      padding:40px;
+  }  
+  #salesViewTableGray{
+    background-color: rgb(212, 212, 212);
+  }
+
+
+
+#tableSection{
+  background-color: rgb(207, 213, 214);
+  padding: 10px;
+  border-radius: 13px;
+  margin: 50px;
+}
+#addButton{
+ display: inline-block;
+ font-size: larger;
+}
+ 
