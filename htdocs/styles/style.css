@@ -83,5 +83,18 @@ fieldset{
       background-color: orange;
     }
     #logoutButton:hover{
-      background-color: orangered;
+      background-color: rgba(255, 115, 0, 0.918);
+    }
+ /*add sale page*/
+    /*Add Sale Button*/
+    #addSale{
+      background-color: #11ca00;
+      color: white;
+      border: none; 
+      
+    }
+    /*Button hover*/
+    #addSale:hover{
+      background-color: #16e0049d;
+
     }
