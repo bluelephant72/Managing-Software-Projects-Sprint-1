@@ -98,11 +98,14 @@ if ($conn) {
 
     // create table successfull	
     if ($result) {
-        echo "yup";
+        echo "Table created successfully";
+
         $query = "INSERT INTO sale_record (cust_id, product_id, quantity, order_date, emp_id)
         VALUES ('$customerID','$productID','$quantity','$orderDate','$employeeID');";
 
         $insert_result = mysqli_query($conn, $query);
+        
+        echo "Data inserted successfully";
 
         if ($insert_result) {
             //   insert successfully 
