@@ -8,7 +8,7 @@
 	<meta name="description" content="login" />
 	<meta name="keywords" content="HTML, Form, tags, login" />
 	<meta name="author" content="Anis, Eamonn, Jonno, Leonard" />
-	<link rel="stylesheet" type="text/css" href="styles/style.css">
+	<link rel="stylesheet" type="text/css" href="../styles/style.css">
 
 	<title>Login</title>
 </head>
