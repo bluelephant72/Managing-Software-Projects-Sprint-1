@@ -23,7 +23,7 @@
 		<form id="loginForm" method="post" action="login_process.php">
 			<!--Login field-->
 			<fieldset id="loginField">
-				<img src="images/img_avatar1.png" id="loginAvatar" alt="avatar Image" title="Filesize 2.76 KB " />
+				<img src="../images/img_avatar1.png" id="loginAvatar" alt="avatar Image" title="Filesize 2.76 KB " />
 
 
 				<!--Name-->
