@@ -24,3 +24,5 @@ LEFT JOIN product
 	ON order_detail.product_id = product.product_id
 LEFT JOIN product_category
 	ON product.category_id = product_category.category_id
+GROUP BY `order`.`order_num`
+ORDER BY `order`.`order_date` DESC
