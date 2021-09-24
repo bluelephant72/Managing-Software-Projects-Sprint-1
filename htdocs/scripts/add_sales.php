@@ -25,19 +25,19 @@
 
     <form method="post" action="php_ordering.php">
       <label for="customerID"><b>Customer ID</b></label>
-      <input id="customerID"  type="text" placeholder="Enter Customer ID" name="customerID" required>
+      <input id="customerID"  type="number" placeholder="Enter Customer ID" name="customerID" required>
       <br>
       <label for="productID"><b>Product ID</b></label>
-      <input id="productID" type="text" placeholder="Enter Product ID" name="productID" required>
+      <input id="productID" type="number" placeholder="Enter Product ID" name="productID" required>
       <br>
       <label for="quantity"><b>Quantity</b></label>
-      <input id="quantity" type="text" placeholder="Enter Quantity" name="quantity" required>
+      <input id="quantity" type="number" placeholder="Enter Quantity" name="quantity" required>
       <br>
       <label for="orderDate"><b>Order Date</b></label>
-      <input  id="orderDate" type="text" placeholder="Enter Order Date" name="orderDate" required>
+      <input  id="orderDate" type="datetime-local" placeholder="Enter Order Date" name="orderDate" required>
       <br>
       <label for="employeeID"><b>Employee ID</b></label>
-      <input id="employeeID"type="text" placeholder="Enter Employee ID" name="employeeID" required>
+      <input id="employeeID"type="number" placeholder="Enter Employee ID" name="employeeID" required>
       <br>
       <button id="addSale" name ="addSale" type="submit">Add Sale</button>
       <br>
