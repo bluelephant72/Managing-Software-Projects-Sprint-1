@@ -19,18 +19,23 @@
       <h1>People Health Pharmacy</h1>
       <h2>Add a Sale</h2>
     </div>
-    <form action="add_sales_products_ordered.html">
-      <b>Enter Order Details</b>
+    <form>
       <label for="customerID"><b>Customer ID</b></label>
       <input type="text" placeholder="Enter Customer ID" name="customerID" required>
       <br>
+      <label for="productID"><b>Product ID</b></label>
+      <input type="text" placeholder="Enter Product ID" name="productID" required>
+      <br>
+      <label for="quantity"><b>Quantity</b></label>
+      <input type="text" placeholder="Enter Quantity" name="quantity" required>
+      <br>
       <label for="orderDate"><b>Order Date</b></label>
-      <input type="datetime" placeholder="Enter Order Date" name="orderDate" required>
+      <input type="text" placeholder="Enter Order Date" name="orderDate" required>
       <br>
       <label for="employeeID"><b>Employee ID</b></label>
       <input type="text" placeholder="Enter Employee ID" name="employeeID" required>
       <br>
-      <button id="contToProducts" type="submit">Continue to Products</button>
+      <button id="addSale" type="submit">Add Sale</button>
       <br>
     </form>
 
