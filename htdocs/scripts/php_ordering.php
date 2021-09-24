@@ -78,42 +78,38 @@ $db_msg = "";
 require_once "settings.php";
 $conn = mysqli_connect($host, $user, $pwd, $sql_db);
 
-
 if ($conn) {
-    // Create order record
-    $query = "INSERT INTO `order` (order_date, cust_id, emp_id)
-    VALUES ('$orderDate', '$customerID', '$employeeID');";
+	// create table if not exists
+	$query = "CREATE TABLE IF NOT EXISTS addSale (
+					customer_id INT PRIMARY KEY, 
+					product_id INT,
+					quantity INT,
+                    order_id date,
+                    employee_id INT);";
 
-    $order_created = mysqli_query($conn, $query);
+	$result = mysqli_query($conn, $query);
+	// create table successfull	
 
-    // Order created
-    if ($order_created) {
-        echo "Order created";
+	if ($result) {
+		$query = "INSERT INTO addSale (customer_id, product_id, quantity, order_id,employee_id) 
+	VALUES ('$customerID','$productID','$quantity','$orderDate','$employeeID');";
+		$insert_result = mysqli_query($conn, $query);
 
-        $order_num = mysqli_insert_id($conn);
 
-        // Add product
-        $query = "INSERT INTO order_detail (order_num, product_id, quantity, sale_price)
-        VALUES ('$order_num', '$productID', '$quantity', 0);";
-
-        $insert_result = mysqli_query($conn, $query);
-
-        echo "Data inserted successfully";
-
-        if ($insert_result) {
-            //   insert successfully
-            $db_msg = "<p>User's info  inserted into the database.</p>"
-                . "<table id='addSalesTable'><tr><th>Item</th><th>Value</th></tr>"
-                . "<tr><th>customer ID</th><td>" . mysqli_insert_id($conn) . "</td></tr>"
-                . "<tr><th>product ID</th><td>$productID</td></tr>"
-                . "</table>";
-        } else {
-            $db_msg = "<p>Insert unsuccessful.</p>";
-        }
-    } else {
-        $db_msg = "<p>Create table operation unsuccessful.</p>";
-    }
-    mysqli_close($conn);                    // Close the database connect
+		if ($insert_result) {
+			//   insert successfully 
+			$db_msg = "<p>User's info  inserted into the database.</p>"
+				. "<table id='salesViewTable'><tr><th>Item</th><th>Value</th></tr>"
+				. "<tr><th>user ID</th><td>" . mysqli_insert_id($conn) . "</td></tr>"
+				. "<tr><th>Username</th><td>$customerID</td></tr>"
+				. "</table>";
+		} else {
+			$db_msg = "<p>Insert unsuccessful.</p>";
+		}
+	} else {
+		$db_msg = "<p>Create table operation unsuccessful.</p>";
+	}
+	mysqli_close($conn);					// Close the database connect
 } else {
-    $db_msg = "<p>Unable to connect to the database.</p>";
+	$db_msg = "<p>Unable to connect to the database.</p>";
 }

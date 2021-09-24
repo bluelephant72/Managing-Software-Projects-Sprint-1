@@ -1,0 +1,2 @@
+We dont need them any more as we now got a login.php page and login_processor to store users data 
+in database.

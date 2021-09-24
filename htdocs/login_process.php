@@ -8,15 +8,15 @@ function sanitise_input($data)
 }
 
 //  if it is not submitted from login
-if (!isset($_POST["loginButton"])) {
-	header("location:index.php");
+if (!isset($_POST["Login"])) {
+	header("location:login.php");
 	exit();
 }
 $err_msg = "";
 
 // userName
 if (!isset($_POST["userName"])) {
-	header("location:index.php");
+	header("location:login.php");
 	exit();
 } else {
 	$err_msg = "";
@@ -31,7 +31,7 @@ if (!isset($_POST["userName"])) {
 
 // Password 	
 if (!isset($_POST["password"])) {
-	header("location:index.php");
+	header("location:login.php");
 	exit();
 } else {
 	$password = $_POST["password"];
@@ -46,7 +46,7 @@ if (!isset($_POST["password"])) {
 
 //record messages during database operations
 $db_msg = "";
-require_once "settings.php";
+require_once "scripts/settings.php";
 $conn = mysqli_connect($host, $user, $pwd, $sql_db);
 
 
@@ -65,6 +65,9 @@ if ($conn) {
 		$insert_result = mysqli_query($conn, $query);
 
 		if ($insert_result) {
+			header("location:scripts/home.php");
+			exit();
+
 			//   insert successfully 
 			$db_msg = "<p>User's info  inserted into the database.</p>"
 				. "<table id='salesViewTable'><tr><th>Item</th><th>Value</th></tr>"

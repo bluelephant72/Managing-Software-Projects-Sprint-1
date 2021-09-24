@@ -25,14 +25,14 @@
     
     <div class="container">
       <label for="uname"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="uname" required>
+      <input  type="text" id="userName"  placeholder="Enter Username" name="uname" required>
       <br>
       <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required>
+      <input id="password" type="password" placeholder="Enter Password" name="psw" required>
       <br>
       <span class="psw"><a href="#">Forgot password?</a></span>
       <br>
-      <button id="loginButton" type="submit">Sign In</button>
+      <form id="loginForm" method="post" action="scripts/login_process.php"> <button id="loginButton" type="submit">Sign In</button></form>
     </div>
     
   </form>

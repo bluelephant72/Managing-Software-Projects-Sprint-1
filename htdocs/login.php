@@ -42,7 +42,13 @@
    			    <br>	
 				<!--Log in button-->
 				<input id="loginButton" type="Submit" name="Login" value="Sign In" />
-				<form action="home.html"><button>Service Button</button></form>
+
+				<!-- Services button
+				<form action="scripts/home.php"><button>Service Button</button></form>
+				-->
+
+				</br>
+				</br>
 			</fieldset>
 
 		</form>
