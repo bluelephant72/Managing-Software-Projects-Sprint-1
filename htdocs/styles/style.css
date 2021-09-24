@@ -85,7 +85,31 @@ fieldset{
     #logoutButton:hover{
       background-color: rgba(255, 115, 0, 0.918);
     }
- /*add sale page*/
+  /*Add order details page*/
+    /*cont button*/
+    #contToProducts{
+    background-color: #11ca00;
+    color: white;
+    border: none; 
+    
+  }
+  /*Button hover*/
+  #contToProducts:hover{
+    background-color: #16e0049d;
+
+  }
+  /*add products page*/
+    /*add another product*/
+    #addAnotherProduct{
+      background-color: #61746c;
+      color: white;
+      border: none;
+    }
+    /*Button hover*/
+    #addAnotherProduct:hover{
+      background-color: #1a221a8f;
+
+    } 
     /*Add Sale Button*/
     #addSale{
       background-color: #11ca00;
