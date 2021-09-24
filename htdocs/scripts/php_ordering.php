@@ -27,7 +27,7 @@ if (!isset($_POST["customerID"])) {
     }
 }
 
-// productID 	
+// productID
 if (!isset($_POST["productID"])) {
     header("location:add_sales.php");
     exit();
@@ -39,7 +39,7 @@ if (!isset($_POST["productID"])) {
     }
 }
 
-// quantity 	
+// quantity
 if (!isset($_POST["quantity"])) {
     header("location:add_sales.php");
     exit();
@@ -50,7 +50,7 @@ if (!isset($_POST["quantity"])) {
         $err_msg .= "<p>Please enter password.</p>";
     }
 }
-// orderDate 	
+// orderDate
 if (!isset($_POST["orderDate"])) {
     header("location:add_sales.php");
     exit();
@@ -61,7 +61,7 @@ if (!isset($_POST["orderDate"])) {
         $err_msg .= "<p>Please enter password.</p>";
     }
 }
-// employeeID 	
+// employeeID
 if (!isset($_POST["employeeID"])) {
     header("location:add_sales.php");
     exit();
@@ -80,35 +80,28 @@ $conn = mysqli_connect($host, $user, $pwd, $sql_db);
 
 
 if ($conn) {
-    // create table if not exists
-    $query = "CREATE TABLE IF NOT EXISTS sale_record (
-        cust_id int,
-        product_id int,
-        quantity int,
-        order_date datetime,
-        emp_id int,
-        PRIMARY KEY (cust_id, product_id, emp_id),
-        FOREIGN KEY (cust_id) REFERENCES customer(cust_id),
-        FOREIGN KEY (product_id) REFERENCES order_detail(product_id),
-        FOREIGN KEY (emp_id) REFERENCES employee(emp_id)
-        );";
+    // Create order record
+    $query = "INSERT INTO `order` (order_date, cust_id, emp_id)
+    VALUES ('$orderDate', '$customerID', '$employeeID');";
 
-    $result = mysqli_query($conn, $query);
+    $order_created = mysqli_query($conn, $query);
 
+    // Order created
+    if ($order_created) {
+        echo "Order created";
 
-    // create table successfull	
-    if ($result) {
-        echo "Table created successfully";
+        $order_num = mysqli_insert_id($conn);
 
-        $query = "INSERT INTO sale_record (cust_id, product_id, quantity, order_date, emp_id)
-        VALUES ('$customerID','$productID','$quantity','$orderDate','$employeeID');";
+        // Add product
+        $query = "INSERT INTO order_detail (order_num, product_id, quantity, sale_price)
+        VALUES ('$order_num', '$productID', '$quantity', 0);";
 
         $insert_result = mysqli_query($conn, $query);
-        
+
         echo "Data inserted successfully";
 
         if ($insert_result) {
-            //   insert successfully 
+            //   insert successfully
             $db_msg = "<p>User's info  inserted into the database.</p>"
                 . "<table id='addSalesTable'><tr><th>Item</th><th>Value</th></tr>"
                 . "<tr><th>customer ID</th><td>" . mysqli_insert_id($conn) . "</td></tr>"
