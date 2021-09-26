@@ -38,7 +38,7 @@ $query = "SELECT * FROM addSale;";
 			$record = mysqli_fetch_assoc ($result);
 			if ($record) {		//   record exist
 				echo "<table id='salesViewTable'>";
-				echo "<tr><th>customer_id</th><th>product_id</th><th>quantity</th><th>order_id</th><th>employee_id</th></tr>";
+				echo "<tr><th>order_id</th><th>customer_id</th><th>product_id</th><th>quantity</th><th>dateTime</th><th>employee_id</th></tr>";
 				while ($record) {
 					echo "<tr><td>{$record['order_id']}</td>";
 					echo "<td>{$record['customer_id']}</td>";
