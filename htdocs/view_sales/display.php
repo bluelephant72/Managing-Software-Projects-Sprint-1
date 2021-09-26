@@ -69,6 +69,8 @@ $query = "SELECT * FROM addSale;";
 	  <button id="delete" name="delete" type="submit">Delete Order</button>
       <br>
 </form>
+
+<form><button formaction="../login.php" id="logoutButton" type="submit">Log Out</button></form>
     <!-- Search bar form to look for a specific data
 	<h2>Search Sales</h2>
 	<form action="display.php" method="post" >
