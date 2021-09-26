@@ -9,6 +9,11 @@ last modified: 22/09/2021
 body{
     background-color:rgba(64, 46, 165, 0.925);
     text-align: center;
+    padding: 8px;
+    margin:auto;
+    width: 90%;
+    border-radius: 3px;
+    border: none;
   }
 
  
@@ -21,8 +26,9 @@ body{
    /*Logout Button*/
      #logoutButton{
        background-color: orange;
-       float: right;
+       float: center;
      }
      #logoutButton:hover{
        background-color: orangered;
     }
+
