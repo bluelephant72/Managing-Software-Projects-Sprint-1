@@ -9,11 +9,6 @@ last modified: 22/09/2021
 body{
     background-color:rgba(64, 46, 165, 0.925);
     text-align: center;
-    padding: 8px;
-    margin:auto;
-    width: 90%;
-    border-radius: 3px;
-    border: none;
   }
 
  
@@ -30,5 +25,18 @@ body{
      }
      #logoutButton:hover{
        background-color: orangered;
+    }
+    #Saleentry{
+        max-width:300px;
+        height: 390px;
+        margin: auto;
+        padding-top: 0px;
+        padding-bottom: 3.5%;
+        padding-left: 2.5%;
+        padding-right: 2.5%;
+      
+        border-radius: 20px;
+        border: none;
+        background-color: rgba(216, 232, 233, 0.938);
     }
 

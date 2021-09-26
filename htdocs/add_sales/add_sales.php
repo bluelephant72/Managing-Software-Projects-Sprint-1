@@ -23,7 +23,7 @@
       <h1>People Health Pharmacy</h1>
       <h2>Add a Sale</h2>
     </div>
-      <form  method="post" action="../scripts/php_ordering.php">
+      <form  id= "Saleentry" method="post" action="../scripts/php_ordering.php">
       <label for="customerID"><b>Customer ID</b></label>
       <input type="number" placeholder="Enter Customer ID" name="customerID" required>
       <br>
