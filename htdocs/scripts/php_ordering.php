@@ -35,7 +35,7 @@ if (!isset($_POST["productID"])) {
     $productID = $_POST["productID"];
     $productID = sanitise_input($productID);
     if ($productID == "") {
-        $err_msg .= "<p>Please enter password.</p>";
+        $err_msg .= "<p>Please enter productID.</p>";
     }
 }
 
@@ -47,7 +47,7 @@ if (!isset($_POST["quantity"])) {
     $quantity = $_POST["quantity"];
     $quantity = sanitise_input($quantity);
     if ($quantity == "") {
-        $err_msg .= "<p>Please enter password.</p>";
+        $err_msg .= "<p>Please enter quantity.</p>";
     }
 }
 // orderDate
@@ -58,7 +58,7 @@ if (!isset($_POST["orderDate"])) {
     $orderDate = $_POST["orderDate"];
     $orderDate = sanitise_input($orderDate);
     if ($orderDate == "") {
-        $err_msg .= "<p>Please enter password.</p>";
+        $err_msg .= "<p>Please enter orderDate.</p>";
     }
 }
 // employeeID
@@ -69,7 +69,7 @@ if (!isset($_POST["employeeID"])) {
     $employeeID = $_POST["employeeID"];
     $employeeID = sanitise_input($employeeID);
     if ($employeeID == "") {
-        $err_msg .= "<p>Please enter password.</p>";
+        $err_msg .= "<p>Please enter employeeID.</p>";
     }
 }
 
@@ -91,15 +91,21 @@ if ($conn) {
 	// create table successfull	
 
 	if ($result) {
-		$query = "INSERT INTO addSale (customer_id, product_id, quantity, orderDate,employee_id) 
+		$query = "INSERT INTO addSale (customer_id, product_id, quantity, orderDate, employee_id) 
 	VALUES ('$customerID','$productID','$quantity','$orderDate','$employeeID');";
 		$insert_result = mysqli_query($conn, $query);
-
-            echo"Data inserted Successfully";
+    
 
 		if ($insert_result) {
-            
-          
+            echo"Data inserted Successfully </br>";
+ 
+     
+            echo"you will redirect to Home page in 3 seconds ";
+ 
+       
+        header('refresh: 3; url=home.php'); 
+        exit();
+
 			//   insert successfully 
 			$db_msg = "<p>User's info  inserted into the database.</p>"
 				. "<table id='salesViewTable'><tr><th>Item</th><th>Value</th></tr>"
