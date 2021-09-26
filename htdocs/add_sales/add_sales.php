@@ -7,7 +7,7 @@
   <meta name="description" content="Add a Sale" />
   <meta name="keywords" content="HTML, Form, tags, addsales" />
   <meta name="author" content="Anis, Eamonn, Jonno, Leonard" />
-  <link rel="stylesheet" type="text/css" href="../styles/style.css">
+  <link rel="stylesheet" type="text/css" href="../styles/style_add_sales.css">
 </head>
 <?php
 	$page="add_sales";  

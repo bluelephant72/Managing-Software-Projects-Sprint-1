@@ -1,0 +1,28 @@
+/*
+filename: People Health Pharmecy
+author: Anis, Eamonn, Jonno, Leonard
+created: 22/09/2021
+last modified: 22/09/2021
+*/
+
+/*body*/
+body{
+    background-color:rgba(64, 46, 165, 0.925);
+    text-align: center;
+  }
+
+ 
+ 
+   /*Login avatarimage*/
+   #loginAvatar{
+   width: 10%;
+   }
+
+   /*Logout Button*/
+     #logoutButton{
+       background-color: orange;
+       float: right;
+     }
+     #logoutButton:hover{
+       background-color: orangered;
+    }
