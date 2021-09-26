@@ -1,3 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="Order Submitted">
+	<meta name="keywords" content="PHP, Order Submitted">
+	<meta name="author" content="Leonard,Anis, Jono, Eamonn">
+	<title>display sales</title>
+	<link href="../styles/style.css" rel="stylesheet" >
+</head>
+<body>
+
+	<h2>Order Submitted</h2>
+
+    <form method="get" action="../add_sales/add_sales.php"> <button id="addSalesNavi" type="submit">Add Another Order</button></form>
+    <br>
+    <form method="get" action="home.php"> <button id="returnHomeNavi" type="submit">Return Home</button>
+    <br>
+    <form><button formaction="../login.php" id="logoutButton" type="submit">Log Out</button></form>
+
+
+</body>
+
+
+
+
+
 <?php
 function sanitise_input($data)
 {
@@ -81,17 +108,18 @@ $conn = mysqli_connect($host, $user, $pwd, $sql_db);
 if ($conn) {
 	// create table if not exists
 	$query = "CREATE TABLE IF NOT EXISTS addSale (
-					customer_id INT PRIMARY KEY, 
+					order_id  INT PRIMARY KEY AUTO_INCREMENT,
+                    customer_id INT, 
 					product_id INT,
 					quantity INT,
-                    orderDate date,
+                    orderDate datetime,
                     employee_id INT);";
 
 	$result = mysqli_query($conn, $query);
 	// create table successfull	
 
 	if ($result) {
-		$query = "INSERT INTO addSale (customer_id, product_id, quantity, orderDate,employee_id) 
+		$query = "INSERT INTO addSale (customer_id, product_id, quantity, orderDate, employee_id) 
 	VALUES ('$customerID','$productID','$quantity','$orderDate','$employeeID');";
 		$insert_result = mysqli_query($conn, $query);
 
