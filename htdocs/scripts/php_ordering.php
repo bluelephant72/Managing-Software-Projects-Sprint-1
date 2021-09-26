@@ -91,15 +91,21 @@ if ($conn) {
 	// create table successfull	
 
 	if ($result) {
-		$query = "INSERT INTO addSale (customer_id, product_id, quantity, orderDate,employee_id) 
+		$query = "INSERT INTO addSale (customer_id, product_id, quantity, orderDate, employee_id) 
 	VALUES ('$customerID','$productID','$quantity','$orderDate','$employeeID');";
 		$insert_result = mysqli_query($conn, $query);
-
-            echo"Data inserted Successfully";
+    
 
 		if ($insert_result) {
-            
-          
+            echo"Data inserted Successfully </br>";
+ 
+     
+            echo"you will redirect to Home page in 3 seconds ";
+ 
+       
+        header('refresh: 3; url=home.php'); 
+        exit();
+
 			//   insert successfully 
 			$db_msg = "<p>User's info  inserted into the database.</p>"
 				. "<table id='salesViewTable'><tr><th>Item</th><th>Value</th></tr>"
