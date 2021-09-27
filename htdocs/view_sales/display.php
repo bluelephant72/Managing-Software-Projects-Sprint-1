@@ -108,7 +108,8 @@ $query = "SELECT * FROM addSale;";
 	<button id="edit" name="edit" type="submit">Edit Order Date</button>
     <br>
 </form>
-		
+<br>
+<form><button formaction="../scripts/home.php" id="backButton" type="submit">Back</button></form>	
 <form><button formaction="../login.php" id="logoutButton" type="submit">Log Out</button></form>
     <!-- Search bar form to look for a specific data
 	<h2>Search Sales</h2>
