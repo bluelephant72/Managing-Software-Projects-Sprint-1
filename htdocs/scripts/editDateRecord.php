@@ -38,11 +38,10 @@ require_once "settings.php";
 $conn = mysqli_connect($host, $user, $pwd, $sql_db);
 
 $order_id=$_POST["edit_selection"];
-$edit_value_selection=$_POST["edit_value_selection"];
-$edit_value=$_POST["edit_value"];
+$edit_date_value=$_POST["edit_date_value"];
 
 // will not work till database is built correct
-$query = "UPDATE addSale SET $edit_value_selection = $edit_value WHERE order_id=$order_id";
+$query = "UPDATE addSale SET dateTime = $edit_date_value WHERE order_id=$order_id";
 
 if ($conn->query($query) === TRUE) {
     echo "Record edited successfully";

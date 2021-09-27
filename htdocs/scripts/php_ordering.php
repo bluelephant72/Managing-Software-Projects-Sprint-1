@@ -62,7 +62,7 @@ if (!isset($_POST["productID"])) {
     $productID = $_POST["productID"];
     $productID = sanitise_input($productID);
     if ($productID == "") {
-        $err_msg .= "<p>Please enter password.</p>";
+        $err_msg .= "<p>Please enter productID.</p>";
     }
 }
 
@@ -74,7 +74,7 @@ if (!isset($_POST["quantity"])) {
     $quantity = $_POST["quantity"];
     $quantity = sanitise_input($quantity);
     if ($quantity == "") {
-        $err_msg .= "<p>Please enter password.</p>";
+        $err_msg .= "<p>Please enter quantity.</p>";
     }
 }
 // orderDate
@@ -85,7 +85,7 @@ if (!isset($_POST["orderDate"])) {
     $orderDate = $_POST["orderDate"];
     $orderDate = sanitise_input($orderDate);
     if ($orderDate == "") {
-        $err_msg .= "<p>Please enter password.</p>";
+        $err_msg .= "<p>Please enter orderDate.</p>";
     }
 }
 // employeeID
@@ -96,7 +96,7 @@ if (!isset($_POST["employeeID"])) {
     $employeeID = $_POST["employeeID"];
     $employeeID = sanitise_input($employeeID);
     if ($employeeID == "") {
-        $err_msg .= "<p>Please enter password.</p>";
+        $err_msg .= "<p>Please enter employeeID.</p>";
     }
 }
 
