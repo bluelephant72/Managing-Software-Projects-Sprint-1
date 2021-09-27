@@ -70,6 +70,26 @@ $query = "SELECT * FROM addSale;";
       <br>
 </form>
 
+<form  method="post" action="../scripts/editRecord.php">
+      	<label for="edit_selection"><b>Enter the Order ID for the Order You Want To Edit</b></label>
+		<input type="number" placeholder="Enter Order ID" name="edit_selection" required>
+		<br>
+		<label for="edit_selection"><b>Enter the Value You Want To Edit</b></label>
+		<select name="edit_value_selection" id="edit_value_selection" required>
+			<option value="customer_id">customer_id</option>
+			<option value="product_id">product_id</option>
+			<option value="quantity">quantity</option>
+			<option value="dateTime">dateTime</option>
+			<option value="employee_id">employee_id</option>
+		</select>
+		<br>
+		<label for="edit_value"><b>Enter the New Value (REMEMBER IF EDITING dateTime TO ENTER CORRECTLY) </b></label>
+		<input type="text" placeholder="Enter Value" name="edit_value" required>
+		<br>
+	<button id="edit" name="edit" type="submit">Edit Order</button>
+    <br>
+</form>
+
 <form><button formaction="../login.php" id="logoutButton" type="submit">Log Out</button></form>
     <!-- Search bar form to look for a specific data
 	<h2>Search Sales</h2>
