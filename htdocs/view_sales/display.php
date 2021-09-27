@@ -38,12 +38,13 @@ $query = "SELECT * FROM addSale;";
 			$record = mysqli_fetch_assoc ($result);
 			if ($record) {		//   record exist
 				echo "<table id='salesViewTable'>";
-				echo "<tr><th>customer_id</th><th>product_id</th><th>quantity</th><th>order_id</th><th>employee_id</th></tr>";
+				echo "<tr><th>order_id</th><th>customer_id</th><th>product_id</th><th>quantity</th><th>dateTime</th><th>employee_id</th></tr>";
 				while ($record) {
-					echo "<tr><td>{$record['customer_id']}</td>";
+					echo "<tr><td>{$record['order_id']}</td>";
+					echo "<td>{$record['customer_id']}</td>";
 					echo "<td>{$record['product_id']}</td>";
 					echo "<td>{$record['quantity']}</td>";
-					echo "<td>{$record['order_id']}</td>";
+					echo "<td>{$record['orderDate']}</td>";
 					echo "<td>{$record['employee_id']}</td>";
 					$record = mysqli_fetch_assoc($result);
 				}
@@ -60,6 +61,16 @@ $query = "SELECT * FROM addSale;";
 		echo "<p>Unable to connect to the database.</p>";
 	}
 ?>	
+
+<form  method="post" action="../scripts/deleteRecord.php">
+      <label for="deletion_selection"><b>Enter the Order ID for the Order You Want To Delete</b></label>
+      <input type="number" placeholder="Enter Order ID" name="deletion_selection" required>
+      <br>
+	  <button id="delete" name="delete" type="submit">Delete Order</button>
+      <br>
+</form>
+
+<form><button formaction="../login.php" id="logoutButton" type="submit">Log Out</button></form>
     <!-- Search bar form to look for a specific data
 	<h2>Search Sales</h2>
 	<form action="display.php" method="post" >

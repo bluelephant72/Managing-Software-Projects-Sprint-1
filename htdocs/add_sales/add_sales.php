@@ -19,7 +19,7 @@
 </div>
 <body>
 
-    <div id="AddTitle">
+    <div>
       <h1>People Health Pharmacy</h1>
       <h2>Add a Sale</h2>
     </div>
