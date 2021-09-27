@@ -61,15 +61,55 @@ $query = "SELECT * FROM addSale;";
 		echo "<p>Unable to connect to the database.</p>";
 	}
 ?>	
-
+<h3>Delete Record</h3>
 <form  method="post" action="../scripts/deleteRecord.php">
-      <label for="deletion_selection"><b>Enter the Order ID for the Order You Want To Delete</b></label>
+      <label for="deletion_selection"><b>Enter the order_id for the order you want to delete</b></label><br>
       <input type="number" placeholder="Enter Order ID" name="deletion_selection" required>
       <br>
 	  <button id="delete" name="delete" type="submit">Delete Order</button>
       <br>
 </form>
+<br>
+<br>
+<h3>Edit Record</h3>
+<form  method="post" action="../scripts/editRecord.php">
+		
+      	<label for="edit_selection"><b>Enter the order_id for the order you want to edit</b></label><br>
+		<input type="number" placeholder="Enter Order ID" name="edit_selection" required>
+		<br>
+		<label for="edit_value_selection"><b>Enter the value you want to edit</b></label><br>
+		<select name="edit_value_selection" id="edit_value_selection" required>
+			<option value="customer_id" >customer_id</option>
+			<option value="product_id" selected="selected">product_id</option>
+			<option value="quantity">quantity</option>
+			<option value="employee_id">employee_id</option>
+		</select>
+		<br>
+		
+		<label for="edit_value"><b>Enter the new value <br>(REMEMBER IF EDITING dateTime USE OTHER FORM) </b></label><br>
+		<input type="text" placeholder="Enter Value" name="edit_value" >
+		<br>
 
+	<button id="edit" name="edit" type="submit">Edit Order</button>
+    <br>
+</form>
+<br>
+<br>
+<h3>Edit Date Record</h3>
+<form method="post" action="../scripts/editDateRecord.php">
+
+	
+	<label for="edit_selection"><b>Enter the order_id of the order you want to edit the date for</b></label><br>
+	<input type="number" placeholder="Enter Order ID" name="edit_selection" required>
+	<br>
+	<label for="edit_date_value"><b>Enter new dateTime</b></label><br>
+	<input type="datetime-local" placeholder="" name="edit_date_value">
+	<br>
+	<button id="edit" name="edit" type="submit">Edit Order Date</button>
+    <br>
+</form>
+<br>
+<form><button formaction="../scripts/home.php" id="backButton" type="submit">Back</button></form>	
 <form><button formaction="../login.php" id="logoutButton" type="submit">Log Out</button></form>
     <!-- Search bar form to look for a specific data
 	<h2>Search Sales</h2>
