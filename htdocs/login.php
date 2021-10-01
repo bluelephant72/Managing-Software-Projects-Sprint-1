@@ -27,7 +27,7 @@
 
 
 				<!--Name-->
-				<h1 id="ProjectName">People Health</br>Pharmecy</h1>
+				<h1 id="ProjectName">People Health</br>Pharmercy</h1>
 				<p>Sales Reporting and Prediction System​</p>
 
 				</br>
