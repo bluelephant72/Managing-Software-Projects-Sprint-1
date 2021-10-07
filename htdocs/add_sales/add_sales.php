@@ -8,9 +8,14 @@
   <meta name="keywords" content="HTML, Form, tags, addsales" />
   <meta name="author" content="Anis, Eamonn, Jonno, Leonard" />
   <link rel="stylesheet" type="text/css" href="../styles/styles_add_sales.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+
 </head>
 <?php
-	$page="add_sales";  
+	$page="add_sales";
 ?>
 <title>Add Sales</title>
 
@@ -22,29 +27,29 @@
 <div class="imgcontainer">
     <img src="../images/img_avatar1.png" id="Avatar" alt="Avatar" class="avatar">
 </div>
-   
+
     <div>
       <h1>People Health Pharmacy</h1>
       <h2>Add a Sale</h2>
 
     </div>
       <form  method="post" action="../scripts/php_ordering.php">
-      
+
 			<fieldset id="add_sale_Field">
 
-     
+
       <input type="number" placeholder="Enter Customer ID" name="customerID" required>
       <br>
-    
+
       <input type="number" placeholder="Enter Product ID" name="productID" required>
       <br>
-       
+
       <input type="number" placeholder="Enter Quantity" name="quantity" required>
       <br>
-       
+
       <input type="datetime-local" placeholder="" name="orderDate">
       <br>
-    
+
       <input type="number" placeholder="Enter Employee ID" name="employeeID" required>
       <br>
       <button id="addSale" name="addSale" type="submit">Submit</button>
@@ -53,8 +58,8 @@
     </form>
 
 
- 
-  
+
+
   </section>
 
 </body>

@@ -5,19 +5,25 @@ created: 22/09/2021
 last modified: 22/09/2021
 */
 
+html {
+  min-height: 100%;
+}
+
 /*body*/
-body{
-    background-color:rgba(90, 180, 240, 0.925);
-    text-align: center;  
-    margin-left:300px;  
-    margin-right:300px;
-    margin-top: 20px;
-  
-  }
+ body{
+   margin-left:300px;
+   margin-right:300px;
+   margin-top: 20px;
+   font-family: 'Open Sans', sans-serif;
+   background: rgb(41,58,89);
+   background: linear-gradient(125deg, rgba(41,58,89,1) 0%, rgba(29,36,59,1) 100%);
+   text-align: center;
+ }
+
    /*Login avatarimage*/
    #Avatar{
     margin-right: -60px;
-    
+
    }
    /*Logout Button*/
      #logoutButton{
@@ -26,7 +32,7 @@ body{
        float: right;
        clear: left;
        background-color: orange;
-       
+
      }
      #logoutButton:hover{
        background-color: orangered;
@@ -36,7 +42,7 @@ body{
   #addSale{
     background-color: #11ca00;
     color: white;
-    border: none; 
+    border: none;
     margin-top: 30px;
     padding: 10px;
     width: 50%;
@@ -50,8 +56,8 @@ body{
 
     /*Field */
     #add_sale_Field input{
-     
-  
+
+
       padding: 20px;
       margin:10px;
       width: 50%;
@@ -62,20 +68,19 @@ body{
 
     /*Form adjustment*/
   #add_sales_form{
-    
+
   padding-top: 0px;
   padding-bottom: 3.5%;
   padding-left: 2.5%;
   padding-right: 2.5%;
   border-radius: 20px;
   border: none;
-  background-color: rgba(216, 232, 233, 0.938);
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
 #add_sale_Field{
 
-  border-radius: 3px; 
+  border-radius: 3px;
   border: none;
 
 }
- 
