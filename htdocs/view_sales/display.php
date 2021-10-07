@@ -11,44 +11,83 @@
 </head>
 <body>
 <?php
-	$page="displaySales_page";  
+	$page="displaySales_page";
 ?>
 	<h2>Display Sales Page</h2>
 	<form method='post' action='../scripts/download.php'>
   <input type='submit' value='Export' name='Export'>
-  
+
 <?php
 
-$query = "SELECT * FROM addSale;";
+$query = "SELECT
+	  `order`.order_num as 'Order Number',
+	  `order`.order_date as 'Date',
+	  CONCAT(employee.first_name, ' ', employee.last_name) AS 'Staff Member',
+	  CONCAT(customer.first_name, ' ', customer.last_name) AS 'Customer',
+	  customer.phone AS 'Customer Phone',
+	  GROUP_CONCAT(product.name SEPARATOR '<br />') AS 'Item',
+	  GROUP_CONCAT(product.description SEPARATOR '<br />') AS 'Description',
+	  GROUP_CONCAT(CONCAT('$', product.price) SEPARATOR '<br />') AS 'Item Price',
+	  GROUP_CONCAT(product_category.name SEPARATOR '<br />') AS 'Category',
+	  GROUP_CONCAT(order_detail.quantity SEPARATOR '<br />') AS 'Quantity',
+	  GROUP_CONCAT(CONCAT('$', order_detail.sale_price) SEPARATOR '<br />') AS 'Sale Price',
+	  CONCAT('$', SUM(order_detail.sale_price)) AS 'Total'
+	FROM `order`
+	LEFT JOIN customer
+	  ON `order`.cust_id = customer.cust_id
+	LEFT JOIN employee
+		ON `order`.emp_id = employee.emp_id
+	LEFT JOIN order_detail
+		ON `order`.order_num = order_detail.order_num
+	LEFT JOIN product
+		ON order_detail.product_id = product.product_id
+	LEFT JOIN product_category
+		ON product.category_id = product_category.category_id
+	GROUP BY `order`.`order_num`
+	ORDER BY `order`.`order_date` DESC
+";
 
 	require_once "../scripts/settings.php";	// Load MySQL log in credentials
 	$conn = mysqli_connect ($host,$user,$pwd,$sql_db);	// Log in and use database
 	if ($conn) { // connected
-		$result = mysqli_query ($conn, $query);	
+		$result = mysqli_query ($conn, $query);
 		//Array of  data
 		$user_arr = array();
 		while($row = mysqli_fetch_array($result)){
-		 $customer_id = $row['customer_id'];
-		 $product_id = $row['product_id'];
-		 $quantity = $row['quantity'];
-		 $orderDate = $row['orderDate'];
-		 $employee_id = $row['employee_id'];
-		 $user_arr[] = array($customer_id,$product_id,$quantity,$orderDate,$employee_id);
+		 $order_number = $row['Order Number'];
+		 $date = $row['Date'];
+		 $employee = $row['Staff Member'];
+		 $customer_name = $row['Customer'];
+		 $customer_phone = $row['Customer Phone'];
+		 $item = $row['Item'];
+		 $description = $row['Description'];
+		 $item_price = $row['Item Price'];
+		 $category = $row['Category'];
+		 $quantity = $row['Quantity'];
+		 $sale_price = $row['Sale Price'];
+		 $total = $row['Total'];
+		 $user_arr[] = array($order_number,$date,$employee,$customer_name,$customer_phone,$item,$description,$item_price,$category,$quantity,$sale_price,$total);
 		}
-		$result = mysqli_query ($conn, $query);	
+		$result = mysqli_query ($conn, $query);
 		if ($result) {	//   query was successfully executed
-			
+
 			$record = mysqli_fetch_assoc ($result);
 			if ($record) {		//   record exist
 				echo "<table id='salesViewTable'>";
-				echo "<tr><th>order_id</th><th>customer_id</th><th>product_id</th><th>quantity</th><th>dateTime</th><th>employee_id</th></tr>";
+				echo "<tr><th>Order Number</th><th>Date</th><th>Staff Member</th><th>Customer</th><th>Customer Phone</th><th>Item</th><th>Description</th><th>Item Price</th><th>Category</th><th>Quantity</th><th>Sale Price</th><th>Total</th></tr>";
 				while ($record) {
-					echo "<tr><td>{$record['order_id']}</td>";
-					echo "<td>{$record['customer_id']}</td>";
-					echo "<td>{$record['product_id']}</td>";
-					echo "<td>{$record['quantity']}</td>";
-					echo "<td>{$record['orderDate']}</td>";
-					echo "<td>{$record['employee_id']}</td>";
+					echo "<tr><td>{$record['Order Number']}</td>";
+					echo "<td>{$record['Date']}</td>";
+					echo "<td>{$record['Staff Member']}</td>";
+					echo "<td>{$record['Customer']}</td>";
+					echo "<td>{$record['Customer Phone']}</td>";
+					echo "<td>{$record['Item']}</td>";
+					echo "<td>{$record['Description']}</td>";
+					echo "<td>{$record['Item Price']}</td>";
+					echo "<td>{$record['Category']}</td>";
+					echo "<td>{$record['Quantity']}</td>";
+					echo "<td>{$record['Sale Price']}</td>";
+					echo "<td>{$record['Total']}</td>";
 					$record = mysqli_fetch_assoc($result);
 				}
 				echo "</table>";
@@ -81,7 +120,7 @@ $query = "SELECT * FROM addSale;";
 <br>
 <h3>Edit Record</h3>
 <form  method="post" action="../scripts/editRecord.php">
-		
+
       	<label for="edit_selection"><b>Enter the order_id for the order you want to edit</b></label><br>
 		<input type="number" placeholder="Enter Order ID" name="edit_selection" required>
 		<br>
@@ -93,7 +132,7 @@ $query = "SELECT * FROM addSale;";
 			<option value="employee_id">employee_id</option>
 		</select>
 		<br>
-		
+
 		<label for="edit_value"><b>Enter the new value <br>(REMEMBER IF EDITING dateTime USE OTHER FORM) </b></label><br>
 		<input type="text" placeholder="Enter Value" name="edit_value" >
 		<br>
@@ -106,7 +145,7 @@ $query = "SELECT * FROM addSale;";
 <h3>Edit Date Record</h3>
 <form method="post" action="../scripts/editDateRecord.php">
 
-	
+
 	<label for="edit_selection"><b>Enter the order_id of the order you want to edit the date for</b></label><br>
 	<input type="number" placeholder="Enter Order ID" name="edit_selection" required>
 	<br>
@@ -117,8 +156,8 @@ $query = "SELECT * FROM addSale;";
     <br>
 </form>
 <br>
-<form><button formaction="../scripts/home.php" id="backButton" type="submit">Back</button></form>	
+<form><button formaction="../scripts/home.php" id="backButton" type="submit">Back</button></form>
 <form><button formaction="../login.php" id="logoutButton" type="submit">Log Out</button></form>
- 
+
 </body>
 </html>

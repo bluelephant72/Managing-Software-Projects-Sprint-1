@@ -6,11 +6,12 @@ $export_data = unserialize($_POST['export_data']);
 // file creation
 $file = fopen($filename,"w");
 		//Array of fields
-		$fields = array('customer_id', 'product_id', 'quantity', 'orderDate', 'employee_id');
-        fputcsv($file,$fields); 
+		$fields = array('Order Number', 'Date', 'Staff Member', 'Customer', 'Customer Phone', 'Item', 'Description', 'Item Price', 'Category', 'Quantity', 'Sale Price', 'Total');
+        fputcsv($file,$fields);
 
 foreach ($export_data as $line){
- fputcsv($file,$line);
+	// To display on the page a <br /> is used, for exporting to csv this is replaced with a standard newline
+ fputcsv($file,str_replace('<br />', "\n", $line));
 }
 
 fclose($file);
@@ -18,10 +19,10 @@ fclose($file);
 // download
 header("Content-Description: File Transfer");
 header("Content-Disposition: attachment; filename=".$filename);
-header("Content-Type: application/csv; "); 
+header("Content-Type: application/csv; ");
 
 readfile($filename);
- 
+
 // deleting file
 unlink($filename);
 exit();
