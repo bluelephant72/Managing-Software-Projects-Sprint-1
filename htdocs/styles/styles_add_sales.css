@@ -1,0 +1,81 @@
+/*
+filename: People Health Pharmecy
+author: Anis, Eamonn, Jonno, Leonard
+created: 22/09/2021
+last modified: 22/09/2021
+*/
+
+/*body*/
+body{
+    background-color:rgba(90, 180, 240, 0.925);
+    text-align: center;  
+    margin-left:300px;  
+    margin-right:300px;
+    margin-top: 20px;
+  
+  }
+   /*Login avatarimage*/
+   #Avatar{
+    margin-right: -60px;
+    
+   }
+   /*Logout Button*/
+     #logoutButton{
+       margin-top: 10px;
+       margin-right: -10px;
+       float: right;
+       clear: left;
+       background-color: orange;
+       
+     }
+     #logoutButton:hover{
+       background-color: orangered;
+    }
+
+  /*addSale Button*/
+  #addSale{
+    background-color: #11ca00;
+    color: white;
+    border: none; 
+    margin-top: 30px;
+    padding: 10px;
+    width: 50%;
+    height: 50%;
+    border-radius: 3px;
+  }
+  /*Button hover*/
+  #addSale:hover{
+    background-color: #16e0049d;
+  }
+
+    /*Field */
+    #add_sale_Field input{
+     
+  
+      padding: 20px;
+      margin:10px;
+      width: 50%;
+      height: 50%;
+      border-radius: 3px;
+      border: none;
+    }
+
+    /*Form adjustment*/
+  #add_sales_form{
+    
+  padding-top: 0px;
+  padding-bottom: 3.5%;
+  padding-left: 2.5%;
+  padding-right: 2.5%;
+  border-radius: 20px;
+  border: none;
+  background-color: rgba(216, 232, 233, 0.938);
+}
+
+#add_sale_Field{
+
+  border-radius: 3px; 
+  border: none;
+
+}
+ 
