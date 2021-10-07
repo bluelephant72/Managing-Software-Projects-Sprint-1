@@ -8,7 +8,7 @@
 	<meta name="description" content="login" />
 	<meta name="keywords" content="HTML, Form, tags, login" />
 	<meta name="author" content="Anis, Eamonn, Jonno, Leonard" />
-	<link rel="stylesheet" type="text/css" href="../styles/style.css">
+	<link rel="stylesheet" type="text/css" href="styles/style.css">
 
 	<title>Login</title>
 </head>
@@ -23,7 +23,7 @@
 		<form id="loginForm" method="post" action="login_process.php">
 			<!--Login field-->
 			<fieldset id="loginField">
-				<img src="../images/img_avatar1.png" id="loginAvatar" alt="avatar Image" title="Filesize 2.76 KB " />
+				<img src="images/img_avatar1.png" id="loginAvatar" alt="avatar Image" title="Filesize 2.76 KB " />
 
 
 				<!--Name-->

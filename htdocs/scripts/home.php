@@ -24,12 +24,12 @@
     <div>
         <b>Would you like to?</b>
         <br>
-        <form method="get" action="add_sales.php"> <button id="addSalesNavi" type="submit">Add a Sale</button></form>
-        <form method="get" action="display.php"> <button id="viewReportsNavi" type="submit">View Sales Reports</button>
+        <form method="get" action="../add_sales/add_sales.php"> <button id="addSalesNavi" type="submit">Add a Sale</button></form>
+        <form method="get" action="../view_sales/display.php"> <button id="viewReportsNavi" type="submit">View Sales Reports</button>
     </div>
     <br>
     <div>
-        <form><button formaction="login.php" id="logoutButton" type="submit">Log Out</button></form>
+        <form><button formaction="../login.php" id="logoutButton" type="submit">Log Out</button></form>
     </div>
 </section>
 </body>
