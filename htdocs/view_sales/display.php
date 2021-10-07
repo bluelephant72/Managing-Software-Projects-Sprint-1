@@ -8,11 +8,17 @@
 	<meta name="author" content="Leonard,Anis, Jono, Eamonn">
 	<title>display sales</title>
 	<link href="../styles/styles_view_sales.css" rel="stylesheet" >
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+
 </head>
 <body>
 <?php
 	$page="displaySales_page";
 ?>
+<section id="main_section">
 	<h2>Display Sales Page</h2>
 	<form method='post' action='../scripts/download.php'>
   <input type='submit' value='Export' name='Export'>
@@ -158,6 +164,6 @@ $query = "SELECT
 <br>
 <form><button formaction="../scripts/home.php" id="backButton" type="submit">Back</button></form>
 <form><button formaction="../login.php" id="logoutButton" type="submit">Log Out</button></form>
-
+</section>
 </body>
 </html>

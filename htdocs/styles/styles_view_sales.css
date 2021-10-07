@@ -6,12 +6,18 @@ last modified: 22/09/2021
 */
 
 /*body*/
-body{
-    background-color:rgba(90, 180, 240, 0.925);
-    text-align: center;
-  }
+html {
+  min-height: 100%;
+}
 
-
+/*body*/
+ body{
+   margin-top: 100px;
+   font-family: 'Open Sans', sans-serif;
+   background: rgb(41,58,89);
+   background: linear-gradient(125deg, rgba(41,58,89,1) 0%, rgba(29,36,59,1) 100%);
+   text-align: center;
+ }
 
    /*Login avatarimage*/
    #loginAvatar{
@@ -47,6 +53,17 @@ body{
   #salesViewTableGray{
     background-color: rgb(212, 212, 212);
   }
+
+
+#main_section {
+  padding-top: 20px;
+  padding-bottom: 3.5%;
+  padding-left: 2.5%;
+  padding-right: 2.5%;
+  border-radius: 20px;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.8);
+}
 
 
 
