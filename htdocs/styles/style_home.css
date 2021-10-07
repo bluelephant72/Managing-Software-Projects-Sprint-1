@@ -5,10 +5,16 @@ created: 10/09/2021
 last modified: 27/09/2021
 */
 
+html {
+  min-height: 100%;
+}
+
 /*body*/
  body{
    margin-top: 100px;
-   background-color:rgba(90, 180, 240, 0.925);
+   font-family: 'Open Sans', sans-serif;
+   background: rgb(41,58,89);
+   background: linear-gradient(125deg, rgba(41,58,89,1) 0%, rgba(29,36,59,1) 100%);
    text-align: center;
  }
 
@@ -29,7 +35,7 @@ last modified: 27/09/2021
   padding-right: 2.5%;
   border-radius: 20px;
   border: none;
-  background-color: rgba(216, 232, 233, 0.938);
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
 #addSalesNavi
@@ -45,7 +51,7 @@ border-color: black;
 margin-left: 40px;
 background-color: grey;
 }
-#viewReportsNavi 
+#viewReportsNavi
 {
   margin-top: 30px;
   float: right;
@@ -67,4 +73,3 @@ background-color: grey;
     #logoutButton:hover{
       background-color: rgba(255, 115, 0, 0.918);
     }
- 

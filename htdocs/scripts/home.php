@@ -8,7 +8,11 @@
   <meta name="keywords" content="HTML, Form, tags,payment" />
   <meta name="author" content="Anis, Eamonn, Jonno, Leonard" />
   <link rel="stylesheet" type="text/css" href="../styles/style_home.css">
-  
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+
   <title>Home</title>
 </head>
 
