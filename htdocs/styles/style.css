@@ -5,16 +5,22 @@ created: 10/09/2021
 last modified: 27/09/2021
 */
 
+html {
+  min-height: 100%;
+}
+
 /*body*/
  body{
-   background-color:rgba(90, 180, 240, 0.925);
+   font-family: 'Open Sans', sans-serif;
+   background: rgb(41,58,89);
+   background: linear-gradient(125deg, rgba(41,58,89,1) 0%, rgba(29,36,59,1) 100%);
    text-align: center;
  }
 
 /*Form Fieldset adjustment*/
 fieldset{
-  max-width:300px;
-  height: 390px;
+  max-width:320px;
+  height: 450px;
   margin: auto;
   padding-top: 0px;
   padding-bottom: 3.5%;
@@ -23,7 +29,7 @@ fieldset{
 
   border-radius: 20px;
   border: none;
-  background-color: rgba(216, 232, 233, 0.938);
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
 /*Form input*/
@@ -40,13 +46,12 @@ fieldset{
 {
   margin-top: 100px;
 }
-/*loginpage*/ 
+/*loginpage*/
   /*Login Button*/
     #loginButton{
       background-color: #11ca00;
       color: white;
-      border: none; 
-      
+      border: none;
     }
     /*Button hover*/
     #loginButton:hover{
@@ -58,7 +63,7 @@ fieldset{
   width: 36%;
   }
 
-/*homepage*/  
+/*homepage*/
   /*Navigation Buttons*/
     /*add sales button*/
     #addSalesNavi{
@@ -99,8 +104,8 @@ fieldset{
     #addSale{
       background-color: #11ca00;
       color: white;
-      border: none; 
-      
+      border: none;
+
     }
     /*Button hover*/
     #addSale:hover{
