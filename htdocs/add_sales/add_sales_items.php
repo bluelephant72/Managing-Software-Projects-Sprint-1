@@ -39,7 +39,7 @@
     </script> -->
 </head>
 <?php
-	$page="add_sales";
+	$page="add_sales_items";
 ?>
 <title>Add Sales</title>
 
