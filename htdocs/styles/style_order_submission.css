@@ -4,7 +4,10 @@ author: Anis, Eamonn, Jonno, Leonard
 created: 22/09/2021
 last modified: 22/09/2021
 */
-
+/*body*/
+html {
+  min-height: 100%;
+}
 /*body*/
 body{
   font-family: 'Open Sans', sans-serif;
