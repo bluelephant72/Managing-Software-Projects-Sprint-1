@@ -112,35 +112,36 @@ require_once "settings.php";
 $conn = mysqli_connect($host, $user, $pwd, $sql_db);
 
 if ($conn) {
-	// create table if not exists
-	$query = "CREATE TABLE IF NOT EXISTS addSale (
-					order_id  INT PRIMARY KEY AUTO_INCREMENT,
-                    customer_id INT, 
-					product_id INT,
-					quantity INT,
-                    orderDate datetime,
-                    employee_id INT);";
 
-	$result = mysqli_query($conn, $query);
-	// create table successfull	
+    // Create order record
+    $query = "INSERT INTO `order` (order_date, cust_id, emp_id)
+    VALUES ('$orderDate', '$customerID', '$employeeID');";
 
-	if ($result) {
-		$query = "INSERT INTO addSale (customer_id, product_id, quantity, orderDate,employee_id) 
-	VALUES ('$customerID','$productID','$quantity','$orderDate','$employeeID');";
-		$insert_result = mysqli_query($conn, $query);
- 
-		if ($insert_result) {
+	
+    $order_created = mysqli_query($conn, $query);
+		
+    if ($order_created) {
+        echo "Order created";
+
+    $order_num = mysqli_insert_id($conn);
+        
+    $query = "INSERT INTO order_detail (order_num, product_id, quantity, sale_price)
+    VALUES ('$order_num', '$productID', '$quantity', 0);";
+
+    $insert_result = mysqli_query($conn, $query);
+
+    if ($insert_result) {
             
           
-			//   insert successfully 
-			$db_msg = "<p>User's info  inserted into the database.</p>"
-				. "<table id='salesViewTable'><tr><th>Item</th><th>Value</th></tr>"
-				. "<tr><th>user ID</th><td>" . mysqli_insert_id($conn) . "</td></tr>"
-				. "<tr><th>Username</th><td>$customerID</td></tr>"
-				. "</table>";
-		} else {
-			$db_msg = "<p>Insert unsuccessful.</p>";
-		}
+		//   insert successfully 
+		$db_msg = "<p>User's info  inserted into the database.</p>"
+			. "<table id='salesViewTable'><tr><th>Item</th><th>Value</th></tr>"
+			. "<tr><th>user ID</th><td>" . mysqli_insert_id($conn) . "</td></tr>"
+			. "<tr><th>Username</th><td>$customerID</td></tr>"
+			. "</table>";
+	} else {
+		$db_msg = "<p>Insert unsuccessful.</p>";
+	}
 	} else {
 		$db_msg = "<p>Create table operation unsuccessful.</p>";
 	}
