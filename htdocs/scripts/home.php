@@ -7,19 +7,15 @@
   <meta name="description" content="home" />
   <meta name="keywords" content="HTML, Form, tags,payment" />
   <meta name="author" content="Anis, Eamonn, Jonno, Leonard" />
-  <link rel="stylesheet" type="text/css" href="../styles/style_home.css">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
-
+  <link rel="stylesheet" type="text/css" href="../styles/style.css">
+  
   <title>Home</title>
 </head>
 
 <body>
-<section id="home_form">
+    
     <div class="imgcontainer">
-        <img src="../images/img_avatar1.png" id="Avatar" alt="Avatar" class="avatar">
+        <img src="../images/img_avatar1.png" alt="Avatar" class="avatar">
     </div>
     <div>
         <h1>People Health Pharmacy</h1>
@@ -35,5 +31,5 @@
     <div>
         <form><button formaction="../login.php" id="logoutButton" type="submit">Log Out</button></form>
     </div>
-</section>
+
 </body>

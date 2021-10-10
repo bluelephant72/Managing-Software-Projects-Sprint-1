@@ -6,23 +6,17 @@
 	<meta name="keywords" content="PHP, Order Submitted">
 	<meta name="author" content="Leonard,Anis, Jono, Eamonn">
 	<title>display sales</title>
-	<link href="../styles/style_order_submission.css" rel="stylesheet" >
+	<link href="../styles/style.css" rel="stylesheet" >
 </head>
 <body>
-<section id="ordering_form">
- 
-        <img src="../images/img_avatar1.png" id="Avatar" alt="Avatar" class="avatar">
 
 	<h2>Order Submitted</h2>
-  
+
     <form method="get" action="../add_sales/add_sales.php"> <button id="addSalesNavi" type="submit">Add Another Order</button></form>
     <br>
     <form method="get" action="home.php"> <button id="returnHomeNavi" type="submit">Return Home</button>
     <br>
     <form><button formaction="../login.php" id="logoutButton" type="submit">Log Out</button></form>
-
-</section>
-
 
 
 </body>
@@ -112,36 +106,37 @@ require_once "settings.php";
 $conn = mysqli_connect($host, $user, $pwd, $sql_db);
 
 if ($conn) {
+	// create table if not exists
+	$query = "CREATE TABLE IF NOT EXISTS addSale (
+					order_id  INT PRIMARY KEY AUTO_INCREMENT,
+                    customer_id INT, 
+					product_id INT,
+					quantity INT,
+                    orderDate datetime,
+                    employee_id INT);";
 
-    // Create order record
-    $query = "INSERT INTO `order` (order_date, cust_id, emp_id)
-    VALUES ('$orderDate', '$customerID', '$employeeID');";
+	$result = mysqli_query($conn, $query);
+	// create table successfull	
 
-	
-    $order_created = mysqli_query($conn, $query);
-		
-    if ($order_created) {
-        echo "Order created";
+	if ($result) {
+		$query = "INSERT INTO addSale (customer_id, product_id, quantity, orderDate,employee_id) 
+	VALUES ('$customerID','$productID','$quantity','$orderDate','$employeeID');";
+		$insert_result = mysqli_query($conn, $query);
 
-    $order_num = mysqli_insert_id($conn);
-        
-    $query = "INSERT INTO order_detail (order_num, product_id, quantity, sale_price)
-    VALUES ('$order_num', '$productID', '$quantity', 0);";
+            echo"Data inserted Successfully";
 
-    $insert_result = mysqli_query($conn, $query);
-
-    if ($insert_result) {
+		if ($insert_result) {
             
           
-		//   insert successfully 
-		$db_msg = "<p>User's info  inserted into the database.</p>"
-			. "<table id='salesViewTable'><tr><th>Item</th><th>Value</th></tr>"
-			. "<tr><th>user ID</th><td>" . mysqli_insert_id($conn) . "</td></tr>"
-			. "<tr><th>Username</th><td>$customerID</td></tr>"
-			. "</table>";
-	} else {
-		$db_msg = "<p>Insert unsuccessful.</p>";
-	}
+			//   insert successfully 
+			$db_msg = "<p>User's info  inserted into the database.</p>"
+				. "<table id='salesViewTable'><tr><th>Item</th><th>Value</th></tr>"
+				. "<tr><th>user ID</th><td>" . mysqli_insert_id($conn) . "</td></tr>"
+				. "<tr><th>Username</th><td>$customerID</td></tr>"
+				. "</table>";
+		} else {
+			$db_msg = "<p>Insert unsuccessful.</p>";
+		}
 	} else {
 		$db_msg = "<p>Create table operation unsuccessful.</p>";
 	}

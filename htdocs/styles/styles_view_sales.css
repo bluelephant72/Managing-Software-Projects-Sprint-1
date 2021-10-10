@@ -6,19 +6,13 @@ last modified: 22/09/2021
 */
 
 /*body*/
-html {
-  min-height: 100%;
-}
+body{
+    background-color:rgba(90, 180, 240, 0.925);
+    text-align: center;
+  }
 
-/*body*/
- body{
-   margin-top: 100px;
-   font-family: 'Open Sans', sans-serif;
-   background: rgb(41,58,89);
-   background: linear-gradient(125deg, rgba(41,58,89,1) 0%, rgba(29,36,59,1) 100%);
-   text-align: center;
- }
-
+ 
+ 
    /*Login avatarimage*/
    #loginAvatar{
    width: 10%;
@@ -41,39 +35,18 @@ html {
       background-color: rgb(235, 235, 235);
       border-collapse: collapse;
       margin-top: 30px;
-      padding:10px;
+      padding:40px;
     }
 
    th{
       border: 1px solid rgb(255, 255, 255);
       background-color: rgb(170, 170, 170);
       border-collapse: collapse;
-      padding:10px;
-  }
+      padding:40px;
+  }  
   #salesViewTableGray{
     background-color: rgb(212, 212, 212);
   }
-
-
-#main_section {
-  max-width: 1500px;
-  max-height: 1100px;
-  position: absolute;
-  margin: auto;
-  align-items: center;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  padding-top: 20px;
-  padding-bottom: 3.5%;
-  padding-left: 2.5%;
-  padding-right: 2.5%;
-  border-radius: 20px;
-  border: none;
-  background-color: rgba(255, 255, 255, 0.8);
-  box-shadow: 0 20px 100px 0 rgba(0, 0, 0, 0.2), 0 10px 20px 0 rgba(0, 0, 0, 0.19);
-}
 
 
 
@@ -87,3 +60,4 @@ html {
  display: inline-block;
  font-size: larger;
 }
+ 

@@ -27,7 +27,7 @@
 
 
 				<!--Name-->
-				<h1 id="ProjectName">People Health</br>Pharmercy</h1>
+				<h1 id="ProjectName">People Health</br>Pharmecy</h1>
 				<p>Sales Reporting and Prediction System​</p>
 
 				</br>
@@ -42,13 +42,7 @@
    			    <br>	
 				<!--Log in button-->
 				<input id="loginButton" type="Submit" name="Login" value="Sign In" />
-
-				<!-- Services button
-				<form action="scripts/home.php"><button>Service Button</button></form>
-				-->
-
-				</br>
-				</br>
+				<form action="home.html"><button>Service Button</button></form>
 			</fieldset>
 
 		</form>
