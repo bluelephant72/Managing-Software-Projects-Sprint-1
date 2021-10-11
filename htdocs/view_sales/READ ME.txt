@@ -1,1 +1,0 @@
-After you updated the display page, please replace it with view_sales and rename it to view_sales
