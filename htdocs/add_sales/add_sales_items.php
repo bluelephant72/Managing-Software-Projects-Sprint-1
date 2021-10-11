@@ -14,10 +14,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
 
 
-  <!-- <script type='text/javascript'>
+  <script type='text/javascript'>
         function addFields(){
             // Number of inputs to create
-            var number = document.getElementById("member").value;
+            var number = document.getElementById("items").value;
             // Container <div> where dynamic content will be placed
             var container = document.getElementById("container");
             // Clear previous contents of the container
@@ -26,17 +26,23 @@
             }
             for (i=0;i<number;i++){
                 // Append a node with a random text
-                container.appendChild(document.createTextNode("Member " + (i+1)));
+                container.appendChild(document.createTextNode("Product " + (i+1) + " ID"));
                 // Create an <input> element, set its type and name attributes
-                var input = document.createElement("input");
-                input.type = "text";
-                input.name = "member" + i;
+                var input = document.createElement("productID");
+                input.type = "number";
+                input.name = "productID" + i;
+
+                container.appendChild(document.createTextNode("Quantity of Product " + (i+1)));
+                var input = document.createElement("quantity");
+                input.type = "number";
+                input.name = "quantity" + i;
+
                 container.appendChild(input);
                 // Append a line break 
                 container.appendChild(document.createElement("br"));
             }
         }
-    </script> -->
+    </script>
 </head>
 <?php
 	$page="add_sales_items";
@@ -57,24 +63,20 @@
       <h2>Add Items for a Sale</h2>
 
     </div>
-      <form  method="post" action="../scripts/php_ordering.php">
+    <form  method="post" action="../scripts/php_ordering.php">
 
-			<fieldset id="add_sale_Field">
+		<fieldset id="add_sale_Field">
 
-    <input type="number" placeholder="Enter Product ID" name="productID" required>
-    <br>
-
-    <input type="number" placeholder="Enter Quantity" name="quantity" required>
-    <br>
-      
-      <!-- <input type="text" id="member" name="member" value="">Number of members: (max. 10)<br />
-      <a href="#" id="filldetails" onclick="addFields()">Fill Details</a>
-      <div id="container"> -->
-
+        <input type="text" id="items" name="items" value="">Number of products: (max. 10)<br />
+        <a href="#" id="items" onclick=addFields()>Enter Number</a>
+        <div id="container">
+        
+        
+        <button formaction="../scripts/php_ordering.php" id="addSalesItems" type="submit">Submit</button>
 
     </form>
 
-    <form><button formaction="../add_sales.php" id="backButton" type="submit">Back</button></form>
+    <form></form>
 
 
   </section>
@@ -93,14 +95,14 @@ function sanitise_input($data)
 
 //  if it is not submitted from add_sales, redirect
 if (!isset($_POST["addSales"])) {
-    header("location:add_sales.php");
+    header("location:add_sales_items.php");
     exit();
 }
 $err_msg = "";
 
 // customerID
 if (!isset($_POST["customerID"])) {
-    header("location:add_sales.php");
+    header("location:add_sales_items.php");
     exit();
 } else {
     $err_msg = "";
@@ -115,7 +117,7 @@ if (!isset($_POST["customerID"])) {
 
 // orderDate
 if (!isset($_POST["orderDate"])) {
-    header("location:add_sales.php");
+    header("location:add_sales_items.php");
     exit();
 } else {
     $orderDate = $_POST["orderDate"];
@@ -127,7 +129,7 @@ if (!isset($_POST["orderDate"])) {
 }
 // employeeID
 if (!isset($_POST["employeeID"])) {
-    header("location:add_sales.php");
+    header("location:add_sales_items.php");
     exit();
 } else {
     $employeeID = $_POST["employeeID"];
@@ -135,6 +137,6 @@ if (!isset($_POST["employeeID"])) {
     if ($employeeID == "") {
         $err_msg .= "<p>Please enter employeeID.</p>";
     }
-    $_Session["employeeID"] = $employeeID
-}
+    $_Session["employeeID"] = $employeeID;
+} 
 

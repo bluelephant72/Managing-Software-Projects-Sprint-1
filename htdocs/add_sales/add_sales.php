@@ -48,7 +48,7 @@
 
       <input type="number" placeholder="Enter Employee ID" name="employeeID" required>
       <br>
-      <button id="addSale" name="addSale" type="submit">Submit</button>
+      <button id="addSales" name="addSales" type="submit">Submit</button>
       <br>
       </fieldset>
     </form>
