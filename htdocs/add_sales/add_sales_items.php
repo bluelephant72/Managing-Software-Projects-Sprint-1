@@ -123,7 +123,7 @@ if (!isset($_POST["customerID"])) {
     if ($customerID == "") {
         $err_msg .= "<p>Please enter customerID.</p>";
     }
-    $_Session["customerID"] = $customerID;
+    $_SESSION["customerID"] = $customerID;
 }
 
 // orderDate
@@ -136,7 +136,7 @@ if (!isset($_POST["orderDate"])) {
     if ($orderDate == "") {
         $err_msg .= "<p>Please enter orderDate.</p>";
     }
-    $_Session["orderDate"] = $orderDate;
+    $_SESSION["orderDate"] = $orderDate;
 }
 // employeeID
 if (!isset($_POST["employeeID"])) {
@@ -148,6 +148,6 @@ if (!isset($_POST["employeeID"])) {
     if ($employeeID == "") {
         $err_msg .= "<p>Please enter employeeID.</p>";
     }
-    $_Session["employeeID"] = $employeeID;
+    $_SESSION["employeeID"] = $employeeID;
 } 
 

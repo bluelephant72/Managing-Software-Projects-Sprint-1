@@ -74,9 +74,9 @@ if (!isset($_POST["quantity"])) {
     }
 }
 
-$customerID = $_Session["customerid"];
-$orderDate = $_Session["orderDate"];
-$employeeID = $_Session["employeeID"];
+$customerID = $_SESSION["customerID"];
+$orderDate = $_SESSION["orderDate"];
+$employeeID = $_SESSION["employeeID"];
 
 //record messages during database operations
 $db_msg = "";
@@ -86,10 +86,10 @@ $conn = mysqli_connect($host, $user, $pwd, $sql_db);
 if ($conn) {
 	// create table if not exists
 
-	$result = mysqli_query($conn, $query);
+	// $result = mysqli_query($conn, $query);
 	// create table successfull	
 
-	if ($result) {
+	// if ($result) {
 		$query = "INSERT INTO addSale (customer_id, product_id, quantity, orderDate,employee_id) 
 	VALUES ('$customerID','$productID','$quantity','$orderDate','$employeeID');";
 		$insert_result = mysqli_query($conn, $query);
@@ -106,10 +106,12 @@ if ($conn) {
 		} else {
 			$db_msg = "<p>Insert unsuccessful.</p>";
 		}
-	} else {
-		$db_msg = "<p>Create table operation unsuccessful.</p>";
-	}
+	// } else {
+	// 	$db_msg = "<p>Create table operation unsuccessful.</p>";
+	// }
 	mysqli_close($conn);					// Close the database connect
 } else {
 	$db_msg = "<p>Unable to connect to the database.</p>";
 }
+
+echo "$customerID,$productID,$quantity,$orderDate,$employeeID";
