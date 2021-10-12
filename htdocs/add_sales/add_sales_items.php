@@ -3,46 +3,57 @@
 <html lang="en">
 	<!--Head meta-->
 <head>
-  <meta charset="utf-8" />
-  <meta name="description" content="Add Sale Items" />
-  <meta name="keywords" content="HTML, Form, tags, addsales" />
-  <meta name="author" content="Anis, Eamonn, Jonno, Leonard" />
-  <link rel="stylesheet" type="text/css" href="../styles/styles_add_sales.css">
+    <meta charset="utf-8" />
+    <meta name="description" content="Add Sale Items" />
+    <meta name="keywords" content="HTML, Form, tags, addsales" />
+    <meta name="author" content="Anis, Eamonn, Jonno, Leonard" />
+    <link rel="stylesheet" type="text/css" href="../styles/styles_add_sales.css">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
 
 
-  <script type='text/javascript'>
-        function addFields(){
-            // Number of inputs to create
-            var number = document.getElementById("items").value;
-            // Container <div> where dynamic content will be placed
-            var container = document.getElementById("container");
-            // Clear previous contents of the container
-            while (container.hasChildNodes()) {
-                container.removeChild(container.lastChild);
-            }
-            for (i=0;i<number;i++){
-                // Append a node with a random text
-                container.appendChild(document.createTextNode("Product " + (i+1) + " ID"));
-                // Create an <input> element, set its type and name attributes
-                var input = document.createElement("productID");
-                input.type = "number";
-                input.name = "productID" + i;
+    <script type='text/javascript'>
 
-                container.appendChild(document.createTextNode("Quantity of Product " + (i+1)));
-                var input = document.createElement("quantity");
-                input.type = "number";
-                input.name = "quantity" + i;
 
-                container.appendChild(input);
-                // Append a line break 
-                container.appendChild(document.createElement("br"));
-            }
-        }
+    // Create a break line element
+    var br = document.createElement("br"); 
+    function addFields(){
+    // Create a form synamically
+    var form = document.createElement("form");
+    form.setAttribute("method", "post");
+    form.setAttribute("action", "../scripts/php_ordering.php");
+
+    // Create an input element for Product ID
+    var productID = document.createElement("input");
+    productID.setAttribute("type", "number");
+    productID.setAttribute("name", "productID");
+    productID.setAttribute("placeholder", "Product ID");
+    
+    form.appendChild(productID);
+
+
+     // Create an input element for quantity
+     var quantity = document.createElement("input");
+     quantity.setAttribute("type", "number");
+     quantity.setAttribute("name", "quantity");
+     quantity.setAttribute("placeholder", "Quantity");
+    
+    form.appendChild(quantity); 
+    form.appendChild(br.cloneNode());
+
+    // create a submit button
+    var s = document.createElement("input");
+    s.setAttribute("type", "submit");
+    s.setAttribute("value", "Submit");
+
+    form.appendChild(s); 
+
+    document.getElementsByTagName("body")[0].appendChild(form);
+    }
     </script>
+    
 </head>
 <?php
 	$page="add_sales_items";
@@ -63,28 +74,28 @@
       <h2>Add Items for a Sale</h2>
 
     </div>
-    <form  method="post" action="../scripts/php_ordering.php">
+    <p>
 
 		<fieldset id="add_sale_Field">
-
-        <input type="text" id="items" name="items" value="">Number of products: (max. 10)<br />
+        <p>Number of products: (max. 10)</p>
+        <input type="text" id="items" name="items" value=""><br />
         <a href="#" id="items" onclick=addFields()>Enter Number</a>
         <div id="container">
         
-        
-        <button formaction="../scripts/php_ordering.php" id="addSalesItems" type="submit">Submit</button>
 
-    </form>
+    </p>
 
-    <form></form>
+
 
 
   </section>
 
 </body>
 </html>
-
 <?php
+
+session_start();
+
 function sanitise_input($data)
 {
     $data = trim($data);

@@ -35,7 +35,7 @@
       <h2>Add a Sale</h2>
 
     </div>
-      <form  method="post" action="../add_sales_items.php">
+      <form  method="post" action="add_sales_items.php">
 
 			<fieldset id="add_sale_Field">
 

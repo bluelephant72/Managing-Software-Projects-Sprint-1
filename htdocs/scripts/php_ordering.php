@@ -28,7 +28,9 @@
 </body>
 
 
-
+<?php
+session_start();
+?>
 
 
 <?php
@@ -41,16 +43,16 @@ function sanitise_input($data)
 }
 
 //  if it is not submitted from add_sales, redirect
-if (!isset($_POST["addSaleItems"])) {
-    header("location:add_sales_items.php");
-    exit();
-}
-$err_msg = "";
+// if (!isset($_POST["addSaleItems"])) {
+//     header("location:add_sales_items.php");
+//     exit();
+// }
+// $err_msg = "";
 
 
 // productID
 if (!isset($_POST["productID"])) {
-    header("location:add_sales.php");
+    header("location:../add_sales/add_sales.php");
     exit();
 } else {
     $productID = $_POST["productID"];
@@ -62,7 +64,7 @@ if (!isset($_POST["productID"])) {
 
 // quantity
 if (!isset($_POST["quantity"])) {
-    header("location:add_sales.php");
+    header("location:../add_sales/add_sales.php");
     exit();
 } else {
     $quantity = $_POST["quantity"];
@@ -72,6 +74,9 @@ if (!isset($_POST["quantity"])) {
     }
 }
 
+$customerID = $_Session["customerid"];
+$orderDate = $_Session["orderDate"];
+$employeeID = $_Session["employeeID"];
 
 //record messages during database operations
 $db_msg = "";
@@ -86,7 +91,7 @@ if ($conn) {
 
 	if ($result) {
 		$query = "INSERT INTO addSale (customer_id, product_id, quantity, orderDate,employee_id) 
-	VALUES ('$_Session["customer_id"]','$productID','$quantity','$_Session["orderDate"]','$_Session["orderDate"]');";
+	VALUES ('$customerID','$productID','$quantity','$orderDate','$employeeID');";
 		$insert_result = mysqli_query($conn, $query);
  
 		if ($insert_result) {
