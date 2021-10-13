@@ -12,6 +12,7 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
 <body>
@@ -23,8 +24,8 @@
 	<h2>Display Sales Page</h2>
 	
 	<form method='post' action='../scripts/download.php'>
-  <input type='submit' value='Export' name='Export'>
-
+  <button type='submit' value='Export' name='Export'><i class="fa fa-download"></i> Export</button>
+ 
 <?php
 
 $query = "SELECT
@@ -121,7 +122,7 @@ $query = "SELECT
       <label for="deletion_selection"><b>Enter the order_id for the order you want to delete</b></label><br>
       <input type="number" placeholder="Enter Order ID" name="deletion_selection" required>
       <br>
-	  <button name="delete" type="submit">Delete Order</button>
+	  <button name="delete" type="submit"><i class="fa fa-trash"></i> Delete Order</button>
       <br>
 </form>
  
@@ -145,7 +146,7 @@ $query = "SELECT
 		<input type="text" placeholder="Enter Value" name="edit_value" >
 		<br>
 
-	<button  name="edit" type="submit">Edit Order</button>
+	<button  name="edit" type="submit"><i class="fa fa-edit"></i> Edit Order</button>
     <br>
 </form>
 
@@ -158,7 +159,7 @@ $query = "SELECT
 	<label for="edit_date_value"><b>Enter new dateTime</b></label><br>
 	<input type="datetime-local" placeholder="" name="edit_date_value">
 	<br>
-	<button name="editDate" type="submit">Edit Order Date</button>
+	<button name="editDate" type="submit"> <i class="fa fa-edit"></i> Edit Order Date</button>
     <br>
 </form>
  
