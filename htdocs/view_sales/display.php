@@ -22,10 +22,10 @@
 <section id="main_section">
 <form><button formaction="../login.php" id="logoutButton" type="submit">Log Out</button></form>
 	<h2>Display Sales Page</h2>
-	
+
 	<form method='post' action='../scripts/download.php'>
   <button type='submit' value='Export' name='Export'><i class="fa fa-download"></i> Export</button>
- 
+
 <?php
 
 $query = "SELECT
@@ -111,7 +111,7 @@ $query = "SELECT
 	} else {
 		echo "<p>Unable to connect to the database.</p>";
 	}
-	$serialize_user_arr = serialize($user_arr);
+	$serialize_user_arr = base64_encode(serialize($user_arr));
 	?>
    <textarea name='export_data' style='display: none;'><?php echo $serialize_user_arr; ?></textarea>
   </form>
@@ -125,7 +125,7 @@ $query = "SELECT
 	  <button name="delete" type="submit"><i class="fa fa-trash"></i> Delete Order</button>
       <br>
 </form>
- 
+
 <form id="edit" method="post" action="../scripts/editRecord.php">
 
 <h3>Edit Record</h3>
@@ -162,7 +162,7 @@ $query = "SELECT
 	<button name="editDate" type="submit"> <i class="fa fa-edit"></i> Edit Order Date</button>
     <br>
 </form>
- 
+
 <form><button formaction="../scripts/home.php" id="backButton" type="submit">Back</button></form>
 
 </section>
