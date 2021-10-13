@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="description" content="Display">
 	<meta name="keywords" content="PHP, Display page">
-	<meta name="author" content="Leonard,Anis, Jono, Eamonn">
+	<meta name="author" content="Leonard, Anis, Jono, Eamonn">
 	<title>display sales</title>
 	<link href="../styles/styles_view_sales.css" rel="stylesheet" >
 
@@ -19,7 +19,9 @@
 	$page="displaySales_page";
 ?>
 <section id="main_section">
+<form><button formaction="../login.php" id="logoutButton" type="submit">Log Out</button></form>
 	<h2>Display Sales Page</h2>
+	
 	<form method='post' action='../scripts/download.php'>
   <input type='submit' value='Export' name='Export'>
 
@@ -113,19 +115,19 @@ $query = "SELECT
    <textarea name='export_data' style='display: none;'><?php echo $serialize_user_arr; ?></textarea>
   </form>
 
-
+  <form id="delete" method="post" action="../scripts/deleteRecord.php">
 <h3>Delete Record</h3>
-<form  method="post" action="../scripts/deleteRecord.php">
+
       <label for="deletion_selection"><b>Enter the order_id for the order you want to delete</b></label><br>
       <input type="number" placeholder="Enter Order ID" name="deletion_selection" required>
       <br>
-	  <button id="delete" name="delete" type="submit">Delete Order</button>
+	  <button name="delete" type="submit">Delete Order</button>
       <br>
 </form>
-<br>
-<br>
+ 
+<form id="edit" method="post" action="../scripts/editRecord.php">
+
 <h3>Edit Record</h3>
-<form  method="post" action="../scripts/editRecord.php">
 
       	<label for="edit_selection"><b>Enter the order_id for the order you want to edit</b></label><br>
 		<input type="number" placeholder="Enter Order ID" name="edit_selection" required>
@@ -143,14 +145,12 @@ $query = "SELECT
 		<input type="text" placeholder="Enter Value" name="edit_value" >
 		<br>
 
-	<button id="edit" name="edit" type="submit">Edit Order</button>
+	<button  name="edit" type="submit">Edit Order</button>
     <br>
 </form>
-<br>
-<br>
-<h3>Edit Date Record</h3>
-<form method="post" action="../scripts/editDateRecord.php">
 
+<form id="editDate" method="post" action="../scripts/editDateRecord.php">
+<h3>Edit Date Record</h3>
 
 	<label for="edit_selection"><b>Enter the order_id of the order you want to edit the date for</b></label><br>
 	<input type="number" placeholder="Enter Order ID" name="edit_selection" required>
@@ -158,12 +158,12 @@ $query = "SELECT
 	<label for="edit_date_value"><b>Enter new dateTime</b></label><br>
 	<input type="datetime-local" placeholder="" name="edit_date_value">
 	<br>
-	<button id="edit" name="edit" type="submit">Edit Order Date</button>
+	<button name="editDate" type="submit">Edit Order Date</button>
     <br>
 </form>
-<br>
+ 
 <form><button formaction="../scripts/home.php" id="backButton" type="submit">Back</button></form>
-<form><button formaction="../login.php" id="logoutButton" type="submit">Log Out</button></form>
+
 </section>
 </body>
 </html>
