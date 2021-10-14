@@ -1,7 +1,7 @@
 <?php
 
 $filename = 'Sales Report.csv';
-$export_data = unserialize($_POST['export_data']);
+$export_data = unserialize(base64_decode($_POST['export_data']));
 
 // file creation
 $file = fopen($filename,"w");

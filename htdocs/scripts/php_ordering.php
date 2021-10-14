@@ -42,49 +42,7 @@ function sanitise_input($data)
     return $data;
 }
 
-//  if it is not submitted from add_sales, redirect
-// if (!isset($_POST["addSaleItems"])) {
-//     header("location:add_sales_items.php");
-//     exit();
-// }
-// $err_msg = "";
 
-//legacy add
-	// // productID
-	// if (!isset($_POST["productID"])) {
-	// 	header("location:../add_sales/add_sales.php");
-	// 	exit();
-	// } else {
-	// 	$productID = $_POST["productID"];
-	// 	$productID = sanitise_input($productID);
-	// 	if ($productID == "") {
-	// 		$err_msg .= "<p>Please enter productID.</p>";
-	// 	}
-	// }
-
-	// // quantity
-	// if (!isset($_POST["quantity"])) {
-	// 	header("location:../add_sales/add_sales.php");
-	// 	exit();
-	// } else {
-	// 	$quantity = $_POST["quantity"];
-	// 	$quantity = sanitise_input($quantity);
-	// 	if ($quantity == "") {
-	// 		$err_msg .= "<p>Please enter quantity.</p>";
-	// 	}
-	// }
-
-
-// 	//potential solution
-// // set attibute $i
-// 	$i = 1;
-
-
-// // productID
-// 	if (isset($_POST["quantity"$i])){
-// 		$productID = $_POST["productID"$i];
-// 		$productID = sanitise_input($productID);
-// 	}
 
 
 
@@ -98,6 +56,7 @@ require_once "settings.php";
 $conn = mysqli_connect($host, $user, $pwd, $sql_db);
 
 if ($conn) {
+
 	// create table if not exists
 
 	// $result = mysqli_query($conn, $query);
@@ -145,6 +104,7 @@ if ($conn) {
 
 	} 
 	else {
+
 		$db_msg = "<p>Create table operation unsuccessful.</p>";
 	}
 	mysqli_close($conn);					// Close the database connect

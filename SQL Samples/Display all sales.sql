@@ -1,5 +1,7 @@
 USE php_srep_ordering;
 
+-- Copy below to use in PHP, remember to replace the double quotes with single quotes
+
 SELECT
   `order`.order_num as "Order Number",
   `order`.order_date as "Date",
@@ -24,5 +26,7 @@ LEFT JOIN product
 	ON order_detail.product_id = product.product_id
 LEFT JOIN product_category
 	ON product.category_id = product_category.category_id
+-- Line below is optional, can be used to restrict to a specific month
+-- WHERE `order`.order_date >= '2021-09-01' AND `order`.order_date < '2021-09-01' + INTERVAL 1 MONTH
 GROUP BY `order`.`order_num`
 ORDER BY `order`.`order_date` DESC

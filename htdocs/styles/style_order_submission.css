@@ -4,12 +4,16 @@ author: Anis, Eamonn, Jonno, Leonard
 created: 22/09/2021
 last modified: 22/09/2021
 */
-
+/*body*/
+html {
+  min-height: 100%;
+}
 /*body*/
 body{
-    background-color:rgba(90, 180, 240, 0.925);
-    text-align: center;  
-   
+  font-family: 'Open Sans', sans-serif;
+  background: rgb(41,58,89);
+  background: linear-gradient(125deg, rgba(41,58,89,1) 0%, rgba(29,36,59,1) 100%);
+  text-align: center;
   }
   /*avatarimage*/
  #Avatar{
@@ -23,14 +27,15 @@ body{
       margin: auto;
       margin-top: 100px;
       padding-top: 0px;
-      padding-bottom: 3.5%;
-      padding-left: 2.5%;
-      padding-right: 2.5%;
+      padding-top: 0px;
+      padding-bottom: 70px;
+      padding-left: 50px;
+      padding-right: 50px;
       border-radius: 20px;
       border: none;
-      background-color: rgba(216, 232, 233, 0.938);
+      background-color: rgba(255, 255, 255, 0.8);
     }
-    
+
         #addSalesNavi{
       margin-top: 30px;
       float: left;
@@ -57,7 +62,7 @@ body{
         background-color: grey;
       }
 
-      
+
   /*Logout Button*/
     #logoutButton{
       background-color: orange;
@@ -65,7 +70,7 @@ body{
       clear: both;
       margin-top: 30px;
       margin-left: 120px;
-  
+
     }
     #logoutButton:hover{
       background-color: rgba(255, 115, 0, 0.918);
