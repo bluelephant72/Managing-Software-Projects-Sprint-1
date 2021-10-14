@@ -3,43 +3,75 @@
 <html lang="en">
 	<!--Head meta-->
 <head>
-  <meta charset="utf-8" />
-  <meta name="description" content="Add Sale Items" />
-  <meta name="keywords" content="HTML, Form, tags, addsales" />
-  <meta name="author" content="Anis, Eamonn, Jonno, Leonard" />
-  <link rel="stylesheet" type="text/css" href="../styles/styles_add_sales.css">
+    <meta charset="utf-8" />
+    <meta name="description" content="Add Sale Items" />
+    <meta name="keywords" content="HTML, Form, tags, addsales" />
+    <meta name="author" content="Anis, Eamonn, Jonno, Leonard" />
+    <link rel="stylesheet" type="text/css" href="../styles/styles_add_sales.css">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
 
 
-  <!-- <script type='text/javascript'>
-        function addFields(){
-            // Number of inputs to create
-            var number = document.getElementById("member").value;
-            // Container <div> where dynamic content will be placed
-            var container = document.getElementById("container");
-            // Clear previous contents of the container
-            while (container.hasChildNodes()) {
-                container.removeChild(container.lastChild);
-            }
-            for (i=0;i<number;i++){
-                // Append a node with a random text
-                container.appendChild(document.createTextNode("Member " + (i+1)));
-                // Create an <input> element, set its type and name attributes
-                var input = document.createElement("input");
-                input.type = "text";
-                input.name = "member" + i;
-                container.appendChild(input);
-                // Append a line break 
-                container.appendChild(document.createElement("br"));
-            }
+    <script type='text/javascript'>
+
+
+    // Create a break line element
+    var br = document.createElement("br"); 
+    
+
+    //function
+    function addFields(){
+    
+    //retrieves value from doc
+        var number = document.getElementById("items").value;
+        // Create a form synamically
+        var form = document.createElement("form");
+        form.setAttribute("method", "post");
+        form.setAttribute("action", "../scripts/php_ordering.php");
+
+        
+       
+        //loop
+        for (i=0;i<number;i++){ 
+
+            // Create an input element for Product ID
+            var productID = document.createElement("input");
+            productID.setAttribute("type", "number");
+            productID.setAttribute("name", "productID" + (i+1));
+            productID.setAttribute("id", "productID" + (i+1));
+            productID.setAttribute("placeholder", "Product ID for Item " + (i+1));
+            
+            form.appendChild(productID);
+
+            // Create an input element for quantity
+            var quantity = document.createElement("input");
+            quantity.setAttribute("type", "number");
+            quantity.setAttribute("name", "quantity" + (i+1));
+            quantity.setAttribute("id", "quantity" + (i+1));
+            quantity.setAttribute("placeholder", "Quantity for Item " + (i+1));
+            
+            form.appendChild(quantity); 
+            form.appendChild(br.cloneNode());
+
         }
-    </script> -->
+
+
+        // create a submit button
+        var s = document.createElement("input");
+        s.setAttribute("type", "submit");
+        s.setAttribute("value", "Submit");
+
+        form.appendChild(s); 
+
+        document.getElementsByTagName("body")[0].appendChild(form);
+    }
+    </script>
+    
 </head>
 <?php
-	$page="add_sales";
+	$page="add_sales_items";
 ?>
 <title>Add Sales</title>
 
@@ -57,32 +89,28 @@
       <h2>Add Items for a Sale</h2>
 
     </div>
-      <form  method="post" action="../scripts/php_ordering.php">
+    <p>
 
-			<fieldset id="add_sale_Field">
+		<fieldset id="add_sale_Field">
+        <p>Number of products: (max. 10)</p>
+        <input type="number" id="items" name="items" value="1"><br />
+        <a href="#" id="items" onclick=addFields()>Enter Number</a>
+        <div id="container">
+        
 
-    <input type="number" placeholder="Enter Product ID" name="productID" required>
-    <br>
-
-    <input type="number" placeholder="Enter Quantity" name="quantity" required>
-    <br>
-      
-      <!-- <input type="text" id="member" name="member" value="">Number of members: (max. 10)<br />
-      <a href="#" id="filldetails" onclick="addFields()">Fill Details</a>
-      <div id="container"> -->
+    </p>
 
 
-    </form>
-
-    <form><button formaction="../add_sales.php" id="backButton" type="submit">Back</button></form>
 
 
   </section>
 
 </body>
 </html>
-
 <?php
+
+session_start();
+
 function sanitise_input($data)
 {
     $data = trim($data);
@@ -93,14 +121,14 @@ function sanitise_input($data)
 
 //  if it is not submitted from add_sales, redirect
 if (!isset($_POST["addSales"])) {
-    header("location:add_sales.php");
+    header("location:add_sales_items.php");
     exit();
 }
 $err_msg = "";
 
 // customerID
 if (!isset($_POST["customerID"])) {
-    header("location:add_sales.php");
+    header("location:add_sales_items.php");
     exit();
 } else {
     $err_msg = "";
@@ -110,12 +138,12 @@ if (!isset($_POST["customerID"])) {
     if ($customerID == "") {
         $err_msg .= "<p>Please enter customerID.</p>";
     }
-    $_Session["customerID"] = $customerID;
+    $_SESSION["customerID"] = $customerID;
 }
 
 // orderDate
 if (!isset($_POST["orderDate"])) {
-    header("location:add_sales.php");
+    header("location:add_sales_items.php");
     exit();
 } else {
     $orderDate = $_POST["orderDate"];
@@ -123,11 +151,11 @@ if (!isset($_POST["orderDate"])) {
     if ($orderDate == "") {
         $err_msg .= "<p>Please enter orderDate.</p>";
     }
-    $_Session["orderDate"] = $orderDate;
+    $_SESSION["orderDate"] = $orderDate;
 }
 // employeeID
 if (!isset($_POST["employeeID"])) {
-    header("location:add_sales.php");
+    header("location:add_sales_items.php");
     exit();
 } else {
     $employeeID = $_POST["employeeID"];
@@ -135,6 +163,6 @@ if (!isset($_POST["employeeID"])) {
     if ($employeeID == "") {
         $err_msg .= "<p>Please enter employeeID.</p>";
     }
-    $_Session["employeeID"] = $employeeID
-}
+    $_SESSION["employeeID"] = $employeeID;
+} 
 

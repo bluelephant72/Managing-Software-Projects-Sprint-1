@@ -13,6 +13,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
 
+
+
 </head>
 <?php
 	$page="add_sales";
@@ -33,26 +35,20 @@
       <h2>Add a Sale</h2>
 
     </div>
-      <form  method="post" action="../scripts/php_ordering.php">
+      <form  method="post" action="add_sales_items.php">
 
 			<fieldset id="add_sale_Field">
 
 
       <input type="number" placeholder="Enter Customer ID" name="customerID" required>
       <br>
-
-      <input type="number" placeholder="Enter Product ID" name="productID" required>
-      <br>
-
-      <input type="number" placeholder="Enter Quantity" name="quantity" required>
-      <br>
-
+    
       <input type="datetime-local" placeholder="" name="orderDate">
       <br>
 
       <input type="number" placeholder="Enter Employee ID" name="employeeID" required>
       <br>
-      <button id="addSale" name="addSale" type="submit">Submit</button>
+      <button id="addSales" name="addSales" type="submit">Submit</button>
       <br>
       </fieldset>
     </form>

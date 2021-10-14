@@ -28,7 +28,9 @@
 </body>
 
 
-
+<?php
+session_start();
+?>
 
 
 <?php
@@ -40,71 +42,13 @@ function sanitise_input($data)
     return $data;
 }
 
-//  if it is not submitted from add_sales, redirect
-if (!isset($_POST["addSale"])) {
-    header("location:add_sales.php");
-    exit();
-}
-$err_msg = "";
 
-// customerID
-if (!isset($_POST["customerID"])) {
-    header("location:add_sales.php");
-    exit();
-} else {
-    $err_msg = "";
-    $customerID = $_POST["customerID"];
-    $customerID = sanitise_input($customerID);
-    if ($customerID == "") {
-        $err_msg .= "<p>Please enter customerID.</p>";
-    }
-}
 
-// productID
-if (!isset($_POST["productID"])) {
-    header("location:add_sales.php");
-    exit();
-} else {
-    $productID = $_POST["productID"];
-    $productID = sanitise_input($productID);
-    if ($productID == "") {
-        $err_msg .= "<p>Please enter productID.</p>";
-    }
-}
 
-// quantity
-if (!isset($_POST["quantity"])) {
-    header("location:add_sales.php");
-    exit();
-} else {
-    $quantity = $_POST["quantity"];
-    $quantity = sanitise_input($quantity);
-    if ($quantity == "") {
-        $err_msg .= "<p>Please enter quantity.</p>";
-    }
-}
-// orderDate
-if (!isset($_POST["orderDate"])) {
-    header("location:add_sales.php");
-    exit();
-} else {
-    $orderDate = $_POST["orderDate"];
-    $orderDate = sanitise_input($orderDate);
-    if ($orderDate == "") {
-        $err_msg .= "<p>Please enter orderDate.</p>";
-    }
-}
-// employeeID
-if (!isset($_POST["employeeID"])) {
-    header("location:add_sales.php");
-    exit();
-} else {
-    $employeeID = $_POST["employeeID"];
-    $employeeID = sanitise_input($employeeID);
-    if ($employeeID == "") {
-        $err_msg .= "<p>Please enter employeeID.</p>";
-    }
-}
+
+$customerID = $_SESSION["customerID"];
+$orderDate = $_SESSION["orderDate"];
+$employeeID = $_SESSION["employeeID"];
 
 //record messages during database operations
 $db_msg = "";
@@ -113,36 +57,54 @@ $conn = mysqli_connect($host, $user, $pwd, $sql_db);
 
 if ($conn) {
 
-    // Create order record
-    $query = "INSERT INTO `order` (order_date, cust_id, emp_id)
-    VALUES ('$orderDate', '$customerID', '$employeeID');";
+	// create table if not exists
 
+	// $result = mysqli_query($conn, $query);
+	// create table successfull	
+
+	// if ($result) {
+		// Create order record
+		$query = "INSERT INTO `order` (order_date, cust_id, emp_id)
+		VALUES ('$orderDate', '$customerID', '$employeeID');";
 	
-    $order_created = mysqli_query($conn, $query);
+	
+		$order_created = mysqli_query($conn, $query);
 		
-    if ($order_created) {
-        echo "Order created";
 
-    $order_num = mysqli_insert_id($conn);
-        
-    $query = "INSERT INTO order_detail (order_num, product_id, quantity, sale_price)
-    VALUES ('$order_num', '$productID', '$quantity', 0);";
+		if ($order_created) {
+			echo "Order created";
+	
+			$order_num = mysqli_insert_id($conn);
+				
 
-    $insert_result = mysqli_query($conn, $query);
+			//loop per product
 
-    if ($insert_result) {
-            
-          
-		//   insert successfully 
-		$db_msg = "<p>User's info  inserted into the database.</p>"
-			. "<table id='salesViewTable'><tr><th>Item</th><th>Value</th></tr>"
-			. "<tr><th>user ID</th><td>" . mysqli_insert_id($conn) . "</td></tr>"
-			. "<tr><th>Username</th><td>$customerID</td></tr>"
-			. "</table>";
-	} else {
-		$db_msg = "<p>Insert unsuccessful.</p>";
-	}
-	} else {
+			$i = 1;
+			while(isset($_POST["productID".$i]) && isset($_POST["quantity".$i])){
+
+				// productID
+				$productID = $_POST["productID".$i];
+				$productID = sanitise_input($productID);
+
+
+				// quantity
+
+				$quantity = $_POST["quantity".$i];
+				$quantity = sanitise_input($quantity);
+
+				
+				$query = "INSERT INTO `order_detail` (order_num, product_id, quantity, sale_price)
+				VALUES ('$order_num', '$productID', '$quantity', 0);";
+		
+			
+				$insert_result = mysqli_query($conn, $query);
+				$i = $i+1;
+			}
+		//end loop
+
+	} 
+	else {
+
 		$db_msg = "<p>Create table operation unsuccessful.</p>";
 	}
 	mysqli_close($conn);					// Close the database connect
