@@ -49,30 +49,44 @@ function sanitise_input($data)
 // }
 // $err_msg = "";
 
+//legacy add
+	// // productID
+	// if (!isset($_POST["productID"])) {
+	// 	header("location:../add_sales/add_sales.php");
+	// 	exit();
+	// } else {
+	// 	$productID = $_POST["productID"];
+	// 	$productID = sanitise_input($productID);
+	// 	if ($productID == "") {
+	// 		$err_msg .= "<p>Please enter productID.</p>";
+	// 	}
+	// }
 
-// productID
-if (!isset($_POST["productID"])) {
-    header("location:../add_sales/add_sales.php");
-    exit();
-} else {
-    $productID = $_POST["productID"];
-    $productID = sanitise_input($productID);
-    if ($productID == "") {
-        $err_msg .= "<p>Please enter productID.</p>";
-    }
-}
+	// // quantity
+	// if (!isset($_POST["quantity"])) {
+	// 	header("location:../add_sales/add_sales.php");
+	// 	exit();
+	// } else {
+	// 	$quantity = $_POST["quantity"];
+	// 	$quantity = sanitise_input($quantity);
+	// 	if ($quantity == "") {
+	// 		$err_msg .= "<p>Please enter quantity.</p>";
+	// 	}
+	// }
 
-// quantity
-if (!isset($_POST["quantity"])) {
-    header("location:../add_sales/add_sales.php");
-    exit();
-} else {
-    $quantity = $_POST["quantity"];
-    $quantity = sanitise_input($quantity);
-    if ($quantity == "") {
-        $err_msg .= "<p>Please enter quantity.</p>";
-    }
-}
+
+// 	//potential solution
+// // set attibute $i
+// 	$i = 1;
+
+
+// // productID
+// 	if (isset($_POST["quantity"$i])){
+// 		$productID = $_POST["productID"$i];
+// 		$productID = sanitise_input($productID);
+// 	}
+
+
 
 $customerID = $_SESSION["customerID"];
 $orderDate = $_SESSION["orderDate"];
@@ -97,24 +111,42 @@ if ($conn) {
 	
 		$order_created = mysqli_query($conn, $query);
 		
-		echo $query;
+
 		if ($order_created) {
 			echo "Order created";
 	
-		$order_num = mysqli_insert_id($conn);
-			
+			$order_num = mysqli_insert_id($conn);
+				
 
-		//loop per product
-		$query = "INSERT INTO `order_detail` (order_num, product_id, quantity, sale_price)
-		VALUES ('$order_num', '$productID', '$quantity', 0);";
-	
+			//loop per product
+
+			$i = 1;
+			while(isset($_POST["productID".$i]) && isset($_POST["quantity".$i])){
+
+				// productID
+				$productID = $_POST["productID".$i];
+				$productID = sanitise_input($productID);
+
+
+				// quantity
+
+				$quantity = $_POST["quantity".$i];
+				$quantity = sanitise_input($quantity);
+
+				
+				$query = "INSERT INTO `order_detail` (order_num, product_id, quantity, sale_price)
+				VALUES ('$order_num', '$productID', '$quantity', 0);";
 		
-		$insert_result = mysqli_query($conn, $query);
+			
+				$insert_result = mysqli_query($conn, $query);
+				$i = $i+1;
+			}
 		//end loop
-		}
-	// } else {
-	// 	$db_msg = "<p>Create table operation unsuccessful.</p>";
-	// }
+
+	} 
+	else {
+		$db_msg = "<p>Create table operation unsuccessful.</p>";
+	}
 	mysqli_close($conn);					// Close the database connect
 } else {
 	$db_msg = "<p>Unable to connect to the database.</p>";

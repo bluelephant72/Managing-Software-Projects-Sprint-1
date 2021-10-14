@@ -19,38 +19,53 @@
 
     // Create a break line element
     var br = document.createElement("br"); 
+    
+
+    //function
     function addFields(){
-    // Create a form synamically
-    var form = document.createElement("form");
-    form.setAttribute("method", "post");
-    form.setAttribute("action", "../scripts/php_ordering.php");
-
-    // Create an input element for Product ID
-    var productID = document.createElement("input");
-    productID.setAttribute("type", "number");
-    productID.setAttribute("name", "productID");
-    productID.setAttribute("placeholder", "Product ID");
     
-    form.appendChild(productID);
+    //retrieves value from doc
+        var number = document.getElementById("items").value;
+        // Create a form synamically
+        var form = document.createElement("form");
+        form.setAttribute("method", "post");
+        form.setAttribute("action", "../scripts/php_ordering.php");
+
+        
+       
+        //loop
+        for (i=0;i<number;i++){ 
+
+            // Create an input element for Product ID
+            var productID = document.createElement("input");
+            productID.setAttribute("type", "number");
+            productID.setAttribute("name", "productID" + (i+1));
+            productID.setAttribute("id", "productID" + (i+1));
+            productID.setAttribute("placeholder", "Product ID for Item " + (i+1));
+            
+            form.appendChild(productID);
+
+            // Create an input element for quantity
+            var quantity = document.createElement("input");
+            quantity.setAttribute("type", "number");
+            quantity.setAttribute("name", "quantity" + (i+1));
+            quantity.setAttribute("id", "quantity" + (i+1));
+            quantity.setAttribute("placeholder", "Quantity for Item " + (i+1));
+            
+            form.appendChild(quantity); 
+            form.appendChild(br.cloneNode());
+
+        }
 
 
-     // Create an input element for quantity
-     var quantity = document.createElement("input");
-     quantity.setAttribute("type", "number");
-     quantity.setAttribute("name", "quantity");
-     quantity.setAttribute("placeholder", "Quantity");
-    
-    form.appendChild(quantity); 
-    form.appendChild(br.cloneNode());
+        // create a submit button
+        var s = document.createElement("input");
+        s.setAttribute("type", "submit");
+        s.setAttribute("value", "Submit");
 
-    // create a submit button
-    var s = document.createElement("input");
-    s.setAttribute("type", "submit");
-    s.setAttribute("value", "Submit");
+        form.appendChild(s); 
 
-    form.appendChild(s); 
-
-    document.getElementsByTagName("body")[0].appendChild(form);
+        document.getElementsByTagName("body")[0].appendChild(form);
     }
     </script>
     
@@ -78,7 +93,7 @@
 
 		<fieldset id="add_sale_Field">
         <p>Number of products: (max. 10)</p>
-        <input type="text" id="items" name="items" value=""><br />
+        <input type="number" id="items" name="items" value="1"><br />
         <a href="#" id="items" onclick=addFields()>Enter Number</a>
         <div id="container">
         
