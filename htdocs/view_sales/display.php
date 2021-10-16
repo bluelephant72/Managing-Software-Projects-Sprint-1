@@ -126,23 +126,20 @@ $query = "SELECT
       <br>
 </form>
 
-<form id="edit" method="post" action="../scripts/editRecord.php">
+<form id="editCust_Emp" method="post" action="../scripts/editCustEmpRecord.php">
 
-<h3>Edit Record</h3>
+<h3>Edit Customer or Employee Record</h3>
 
       	<label for="edit_selection"><b>Enter the order_id for the order you want to edit</b></label><br>
 		<input type="number" placeholder="Enter Order ID" name="edit_selection" required>
 		<br>
 		<label for="edit_value_selection"><b>Enter the value you want to edit</b></label><br>
 		<select name="edit_value_selection" id="edit_value_selection" required>
-			<option value="customer_id" >customer_id</option>
-			<option value="product_id" selected="selected">product_id</option>
-			<option value="quantity">quantity</option>
-			<option value="employee_id">employee_id</option>
+			<option value="cust_id" selected="selected">cust_id</option>
+			<option value="emp_id">emp_id</option>
 		</select>
 		<br>
-
-		<label for="edit_value"><b>Enter the new value <br>(REMEMBER IF EDITING dateTime USE OTHER FORM) </b></label><br>
+		<label for="edit_value"><b>Enter the new value </b></label><br>
 		<input type="text" placeholder="Enter Value" name="edit_value" >
 		<br>
 
@@ -150,7 +147,33 @@ $query = "SELECT
     <br>
 </form>
 
+<form id="editOrderDet" method="post" action="../scripts/editProdDet.php">
+
+<h3>Edit Product Details Record</h3>
+
+      	<label for="edit_selection"><b>Enter the order_id for the order you want to edit</b></label><br>
+		<input type="number" placeholder="Enter Order ID" name="edit_selection" required>
+		<br>
+		<label for="edit_value_selection"><b>Enter the value you want to edit</b></label><br>
+		<select name="edit_value_selection" id="edit_value_selection" required>
+			<option value="product_id" selected="selected">product_id</option>
+			<option value="quantity">quantity</option>
+		</select>
+		<br>
+
+		<label for="product_id"><b>Enter the product_id of the product you want to edit </b></label><br>
+		<input type="number" placeholder="Enter Value" name="product_id" ><br>
+
+		<label for="edit_value"><b>Enter the new value </b></label><br>
+		<input type="number" placeholder="Enter Value" name="edit_value" >
+		<br>
+
+	<button  name="edit" type="submit"><i class="fa fa-edit"></i> Edit Order</button>
+    <br>
+</form>
+
 <form id="editDate" method="post" action="../scripts/editDateRecord.php">
+
 <h3>Edit Date Record</h3>
 
 	<label for="edit_selection"><b>Enter the order_id of the order you want to edit the date for</b></label><br>
