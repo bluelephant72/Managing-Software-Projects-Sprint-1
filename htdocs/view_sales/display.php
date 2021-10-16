@@ -21,10 +21,15 @@
 ?>
 <section id="main_section">
 <form><button formaction="../login.php" id="logoutButton" type="submit">Log Out</button></form>
-	<h2>Display Sales Page</h2>
+	<h2>Sale History</h2>
 
 	<form method='post' action='../scripts/download.php'>
-  <button type='submit' value='Export' name='Export'><i class="fa fa-download"></i> Export</button>
+  <button type='submit' value='Export' name='Export'><i class="fa fa-download"></i> Export All Sales</button>
+	</form>
+
+	<form method='post' action='../scripts/download_monthly.php'>
+  <button type='submit' value='Export_monthly' name='Export_monthly'><i class="fa fa-download"></i> Export Monthly Sales Summary</button>
+	</form>
 
 <?php
 
