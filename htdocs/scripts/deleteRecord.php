@@ -29,7 +29,19 @@ $conn = mysqli_connect($host, $user, $pwd, $sql_db);
 $x=$_POST["deletion_selection"];
 
 // will not work till database is built correct
-$query = "DELETE FROM addSale WHERE order_id=$x";
+//$query = "DELETE FROM `order` WHERE order_num=$x";
+
+$query = 
+    "DELETE
+    FROM
+        `order_detail`
+    WHERE
+        order_num = $x;
+    DELETE
+    FROM
+        `order`
+    WHERE
+        order_num = $x;";
 
 if ($conn->query($query) === TRUE) {
     echo "Record deleted successfully";
