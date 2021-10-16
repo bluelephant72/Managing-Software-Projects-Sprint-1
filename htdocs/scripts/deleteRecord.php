@@ -31,19 +31,20 @@ $x=$_POST["deletion_selection"];
 // will not work till database is built correct
 //$query = "DELETE FROM `order` WHERE order_num=$x";
 
-$query = 
+$query_order_detail =
     "DELETE
     FROM
         `order_detail`
     WHERE
-        order_num = $x;
-    DELETE
+        order_num = $x;";
+$query_order =
+    "DELETE
     FROM
         `order`
     WHERE
         order_num = $x;";
 
-if ($conn->query($query) === TRUE) {
+if ($conn->query($query_order_detail) && $conn->query($query_order)) {
     echo "Record deleted successfully";
 } else {
     echo "Error deleting record: " . $conn->error;
