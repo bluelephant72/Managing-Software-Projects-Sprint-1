@@ -41,25 +41,29 @@ $order_id=$_POST["edit_selection"];
 $edit_value_selection=$_POST["edit_value_selection"];
 $product_id=$_POST["product_id"];
 $edit_value=$_POST["edit_value"];
-echo $order_id, $edit_value_selection, $edit_value;
+
 // will not work till database is built correct
 //$query = "UPDATE addSale SET $edit_value_selection = $edit_value WHERE order_id=$order_id";
 
 
-if ($edit_value_selection = "product_id"){
+
+if ($edit_value_selection == "product_id"){
     $query = "UPDATE `order_detail` SET $edit_value_selection = $edit_value WHERE order_num=$order_id AND product_id=$product_id";
+
 }
-elseif ($edit_value_selection = "quantity"){
+elseif ($edit_value_selection == "quantity"){
     $query = "UPDATE `order_detail` SET $edit_value_selection = $edit_value WHERE order_num=$order_id AND product_id=$product_id";
+
 }
 else{
     echo "Error Editing Record" . $conn->error;
+
 }
 
 if ($conn->query($query) === TRUE) {
     echo "Record edited successfully";
 } else {
-    echo "Error editing record: " . $conn->error;
+    echo "Error editing record: You may have entered an invalid value <br>" . $conn->error;
 }
 
 mysqli_close($conn);
