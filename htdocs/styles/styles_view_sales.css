@@ -40,6 +40,9 @@ html {
 
  /*Sales View Table*/
 
+#table_container {
+  overflow-x: auto;
+}
 
  #salesViewTable, tr, td{
       border: 1px solid rgb(255, 255, 255);

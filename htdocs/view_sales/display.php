@@ -87,6 +87,7 @@ $query = "SELECT
 
 			$record = mysqli_fetch_assoc ($result);
 			if ($record) {		//   record exist
+				echo "<div id='table_container'>";
 				echo "<table id='salesViewTable'>";
 				echo "<tr><th>Order Number</th><th>Date</th><th>Staff Member</th><th>Customer</th><th>Customer Phone</th><th>Item</th><th>Description</th><th>Item Price</th><th>Category</th><th>Quantity</th><th>Sale Price</th><th>Total</th></tr>";
 				while ($record) {
@@ -105,6 +106,7 @@ $query = "SELECT
 					$record = mysqli_fetch_assoc($result);
 				}
 				echo "</table>";
+				echo "</div>";
 				mysqli_free_result ($result);	// Free resources
 			} else {
 				echo "<p>No record retrieved.</p>";
