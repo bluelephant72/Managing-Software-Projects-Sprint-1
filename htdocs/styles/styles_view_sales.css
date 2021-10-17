@@ -8,14 +8,17 @@ last modified: 22/09/2021
 /*body*/
 html {
   min-height: 100%;
+  background: rgb(41,58,89);
+  background: linear-gradient(125deg, rgba(41,58,89,1) 0%, rgba(29,36,59,1) 100%);
+  background-size: cover;
+  background-repeat:no-repeat;
+  background-attachment: fixed;
 }
 
 /*body*/
  body{
    margin-top: 20px;
    font-family: 'Open Sans', sans-serif;
-   background: rgb(41,58,89);
-   background: linear-gradient(125deg, rgba(41,58,89,1) 0%, rgba(29,36,59,1) 100%);
    text-align: center;
  }
 
@@ -89,7 +92,7 @@ html {
 #delete{
 float: left;
  clear: both;
- 
+
 }
 
 #edit{
@@ -107,5 +110,5 @@ display: inline-block;
   margin-top:110px;
   margin-left: 510px;
   margin-right: -50px;
- 
+
 }
