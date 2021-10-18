@@ -31,39 +31,19 @@
   <button type='submit' value='Export_monthly' name='Export_monthly'><i class="fa fa-download"></i> Export Monthly Sales Summary</button>
 	</form>
 
-	<form method='post' action='display_monthly_sales.php'>	
-  <button type='submit' value='display_monthly_sales' name='display_monthly_sales'><i class="fa fa-laptop"></i> display Monthly Sales</button>
-	</form>
-
 <?php
 
-$query = "SELECT
-	  `order`.order_num as 'Order Number',
-	  `order`.order_date as 'Date',
-	  CONCAT(employee.first_name, ' ', employee.last_name) AS 'Staff Member',
-	  CONCAT(customer.first_name, ' ', customer.last_name) AS 'Customer',
-	  customer.phone AS 'Customer Phone',
-	  GROUP_CONCAT(product.name SEPARATOR '<br />') AS 'Item',
-	  GROUP_CONCAT(product.description SEPARATOR '<br />') AS 'Description',
-	  GROUP_CONCAT(CONCAT('$', product.price) SEPARATOR '<br />') AS 'Item Price',
-	  GROUP_CONCAT(product_category.name SEPARATOR '<br />') AS 'Category',
-	  GROUP_CONCAT(order_detail.quantity SEPARATOR '<br />') AS 'Quantity',
-	  GROUP_CONCAT(CONCAT('$', order_detail.sale_price) SEPARATOR '<br />') AS 'Sale Price',
-	  CONCAT('$', SUM(order_detail.sale_price)) AS 'Total'
-	FROM `order`
-	LEFT JOIN customer
-	  ON `order`.cust_id = customer.cust_id
-	LEFT JOIN employee
-		ON `order`.emp_id = employee.emp_id
-	LEFT JOIN order_detail
-		ON `order`.order_num = order_detail.order_num
-	LEFT JOIN product
-		ON order_detail.product_id = product.product_id
-	LEFT JOIN product_category
-		ON product.category_id = product_category.category_id
-	GROUP BY `order`.`order_num`
-	ORDER BY `order`.`order_date` DESC
-";
+
+$query = "SELECT 
+YEAR(`order`.order_date) as `Year`,
+ MONTHNAME(`order`.order_date) as `Month`,
+ COUNT(order_detail.product_id) as `Products Sold`,
+ CONCAT(`$`, SUM(order_detail.sale_price)) as `Total Sales`
+FROM `order`
+INNER JOIN order_detail
+ON `order`.order_num = order_detail.order_num
+GROUP BY YEAR(`order`.order_date), MONTH(`order`.order_date)
+ORDER BY YEAR(`order`.order_date) DESC, MONTH(`order`.order_date) DESC";
 
 	require_once "../scripts/settings.php";	// Load MySQL log in credentials
 	$conn = mysqli_connect ($host,$user,$pwd,$sql_db);	// Log in and use database

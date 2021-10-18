@@ -31,10 +31,6 @@
   <button type='submit' value='Export_monthly' name='Export_monthly'><i class="fa fa-download"></i> Export Monthly Sales Summary</button>
 	</form>
 
-	<form method='post' action='display_monthly_sales.php'>	
-  <button type='submit' value='display_monthly_sales' name='display_monthly_sales'><i class="fa fa-laptop"></i> display Monthly Sales</button>
-	</form>
-
 <?php
 
 $query = "SELECT
