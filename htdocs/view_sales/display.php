@@ -24,16 +24,6 @@
 	<h2>Sale History</h2>
 
 	<form method='post' action='../scripts/download.php'>
-  <button type='submit' value='Export' name='Export'><i class="fa fa-download"></i> Export All Sales</button>
-	</form>
-
-	<form method='post' action='../scripts/download_monthly.php'>
-  <button type='submit' value='Export_monthly' name='Export_monthly'><i class="fa fa-download"></i> Export Monthly Sales Summary</button>
-	</form>
-
-	<form method='post' action='display_monthly_sales.php'>	
-  <button type='submit' value='display_monthly_sales' name='display_monthly_sales'><i class="fa fa-laptop"></i> display Monthly Sales</button>
-	</form>
 
 <?php
 
@@ -124,8 +114,17 @@ $query = "SELECT
 	}
 	$serialize_user_arr = base64_encode(serialize($user_arr));
 	?>
-   <textarea name='export_data' style='display: none;'><?php echo $serialize_user_arr; ?></textarea>
+		<button type='submit' value='Export' name='Export'><i class="fa fa-download"></i> Export All Sales</button>
+  	<textarea name='export_data' style='display: none;'><?php echo $serialize_user_arr; ?></textarea>
   </form>
+
+	<form method='post' action='../scripts/download_monthly.php'>
+  <button type='submit' value='Export_monthly' name='Export_monthly'><i class="fa fa-download"></i> Export Monthly Sales Summary</button>
+	</form>
+
+	<form method='post' action='display_monthly_sales.php'>
+  <button type='submit' value='display_monthly_sales' name='display_monthly_sales'><i class="fa fa-laptop"></i> display Monthly Sales</button>
+	</form>
 
   <form id="delete" method="post" action="../scripts/deleteRecord.php">
 <h3>Delete Record</h3>
