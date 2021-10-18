@@ -34,16 +34,17 @@
 <?php
 
 
-$query = "SELECT 
-YEAR(`order`.order_date) as `Year`,
- MONTHNAME(`order`.order_date) as `Month`,
- COUNT(order_detail.product_id) as `Products Sold`,
- CONCAT(`$`, SUM(order_detail.sale_price)) as `Total Sales`
+$query = "SELECT
+  YEAR(`order`.order_date) AS 'Year',
+  MONTHNAME(`order`.order_date) AS 'Month',
+  COUNT(order_detail.product_id) AS 'Products Sold',
+  CONCAT('$', SUM(order_detail.sale_price)) AS 'Total Sales'
 FROM `order`
 INNER JOIN order_detail
-ON `order`.order_num = order_detail.order_num
+  ON `order`.order_num = order_detail.order_num
 GROUP BY YEAR(`order`.order_date), MONTH(`order`.order_date)
-ORDER BY YEAR(`order`.order_date) DESC, MONTH(`order`.order_date) DESC";
+ORDER BY YEAR(`order`.order_date) DESC, MONTH(`order`.order_date) DESC;
+";
 
 	require_once "../scripts/settings.php";	// Load MySQL log in credentials
 	$conn = mysqli_connect ($host,$user,$pwd,$sql_db);	// Log in and use database
