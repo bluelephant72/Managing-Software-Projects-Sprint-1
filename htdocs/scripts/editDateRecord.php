@@ -12,7 +12,7 @@
 <body>
 	<h2>Order Edited</h2>
 
-    <form method="get" action="../view_sales/display.php"> <button id="viewReportsNavi" type="submit">View Orders</button></form>
+    <form method="get"  action="../view_sales/display.php"> <button id="viewReportsNavi" type="submit">View Orders</button></form>
     <br>
     <form method="get" action="home.php"> <button id="returnHomeNavi" type="submit">Return Home</button>
     <br>

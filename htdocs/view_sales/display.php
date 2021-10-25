@@ -114,16 +114,16 @@ $query = "SELECT
 	}
 	$serialize_user_arr = base64_encode(serialize($user_arr));
 	?>
-		<button type='submit' value='Export' name='Export'><i class="fa fa-download"></i> Export All Sales</button>
+		<button id="Export" type='submit' value='Export' name='Export'><i class="fa fa-download"></i> Export All Sales</button>
   	<textarea name='export_data' style='display: none;'><?php echo $serialize_user_arr; ?></textarea>
   </form>
 
-	<form method='post' action='../scripts/download_monthly.php'>
-  <button type='submit' value='Export_monthly' name='Export_monthly'><i class="fa fa-download"></i> Export Monthly Sales Summary</button>
+	<form  method='post' action='../scripts/download_monthly.php'>
+  <button id="download_monthly" type='submit' value='Export_monthly' name='Export_monthly'><i class="fa fa-download"></i> Export Monthly Sales Summary</button>
 	</form>
 
-	<form method='post' action='display_monthly_sales.php'>
-  <button type='submit' value='display_monthly_sales' name='display_monthly_sales'><i class="fa fa-laptop"></i> display Monthly Sales</button>
+	<form  method='post' action='display_monthly_sales.php'>
+  <button id="display_monthly_sales" type='submit' value='display_monthly_sales' name='display_monthly_sales'><i class="fa fa-laptop"></i> display Monthly Sales</button>
 	</form>
 
   <form id="delete" method="post" action="../scripts/deleteRecord.php">
@@ -193,7 +193,7 @@ $query = "SELECT
 	<input type="datetime-local" placeholder="" name="edit_date_value">
 	<br>
 	<button name="editDate" type="submit"> <i class="fa fa-edit"></i> Edit Order Date</button>
-    <br>
+	<br>
 </form>
 
 <form><button formaction="../scripts/home.php" id="backButton" type="submit">Back</button></form>
