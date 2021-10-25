@@ -109,9 +109,8 @@ clear: both;
     float: left;
  
   }
-
   #editDate{
-  margin-top: 40px;
+  margin-top: 50px;
    
   }
 
@@ -121,20 +120,23 @@ clear: both;
 }
 
 
-
 #Export{
+margin-top: 10px;
 margin-left: 440px;
 display: inline-block;
 float:left;
 clear: left;
 }
 #download_monthly{
+margin-top: 10px;
+margin-left: 10px;
 display: inline-block;
 float:left;
 clear: right;
-
 }
 #display_monthly_sales{
+margin-top: 10px;
+margin-left: 10px;
 display: inline-block;
 float:left;
 clear: right;
